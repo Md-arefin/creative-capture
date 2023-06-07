@@ -9,13 +9,29 @@ import { AuthContext } from '../../Providers/AuthProvider';
 
 const SignUp = () => {
 
-    const { googleSignIn } = useContext(AuthContext);
+    const { googleSignIn, createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
+
+    const onSubmit = data => {
+        console.log(data);
+        createUser(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateUserProfile({
+                    displayName: data.name, photoURL: data.photo
+                })
+                // navigate(from, { replace: true })
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+    }
 
     console.log(watch("example")); // watch input value by passing the name of it
 
@@ -25,7 +41,7 @@ const SignUp = () => {
         googleSignIn()
             .then(result => {
                 const loggedUser = result.user;
-                navigate(from, { replace: true })
+                navigate(from, { replace: true });
                 console.log(loggedUser);
             })
             .catch(error => {
