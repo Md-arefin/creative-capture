@@ -1,10 +1,13 @@
 import { Controls, Player } from '@lottiefiles/react-lottie-player';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const Login = () => {
+
+    const {googleSignIn } = useContext(AuthContext);
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
@@ -12,6 +15,17 @@ const Login = () => {
     console.log(watch("example")); // watch input value by passing the name of it
 
     // {/* /* "handleSubmit" will validate your inputs before invoking "onSubmit" */ */}
+
+    const handleGoogle = () => {
+        googleSignIn()
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser) ;
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+    }
 
     return (
         <div className='text-center'>
@@ -72,7 +86,7 @@ const Login = () => {
 
                                         <div className='h-[1px] bg-yellow-400 w-[50px]'></div>
                                     </div>
-                                    <button className="mx-auto my-5 btn bg-yellow-500 border-0 text-lg font-semibold w-full"><FcGoogle className='text-xl'/> Login With Google</button>
+                                    <button onClick={ handleGoogle} className="mx-auto my-5 btn bg-yellow-500 border-0 text-lg font-semibold w-full"><FcGoogle className='text-xl'/> Login With Google</button>
                                 </div>
                             </div>
                         </div>

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png'
+import { AuthContext } from '../../Providers/AuthProvider';
 
 
 const Navbar = () => {
+
+    const { user } = useContext(AuthContext);
 
     const navItems = <>
         <li>
@@ -17,6 +20,13 @@ const Navbar = () => {
         </li>
         <li>
             <Link to='/'>Dashboard</Link>
+        </li>
+        <li>
+            <div className="avatar">
+                <div className="w-8 rounded">
+                    <img src={user?.photoURL} alt={user?.displayName} />
+                </div>
+            </div>
         </li>
         <li>
             <Link to='/'>Update Classes</Link>
