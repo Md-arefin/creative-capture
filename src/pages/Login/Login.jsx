@@ -2,12 +2,15 @@ import { Controls, Player } from '@lottiefiles/react-lottie-player';
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 
 const Login = () => {
 
-    const {googleSignIn } = useContext(AuthContext);
+    const { googleSignIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
@@ -18,13 +21,14 @@ const Login = () => {
 
     const handleGoogle = () => {
         googleSignIn()
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser) ;
-        })
-        .catch(error =>{
-            console.log(error);
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     return (
@@ -54,6 +58,7 @@ const Login = () => {
 
                             <div className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-sky-900 ">
                                 <div className="card-body">
+
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text text-white">Email</span>
@@ -61,6 +66,7 @@ const Login = () => {
                                         <input type="text" placeholder="email"
                                             {...register("email", { required: true })}
                                             className="input input-bordered" />
+                                        {errors.email && <span className='text-red-600 font-bold text-lg mt-2'>Email field is required</span>}
                                     </div>
 
                                     <div className="form-control">
@@ -68,15 +74,26 @@ const Login = () => {
                                             <span className="label-text text-white">Password</span>
                                         </label>
                                         <input type="password" placeholder="password"
-                                            {...register("password", { required: true })}
+                                            {...register("password", {
+                                                required: true,
+                                                minLength: 6,
+                                                pattern: /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/
+                                            })}
                                             className="input input-bordered" />
-                                        <p className=' mt-4 text-white'>
-                                            New to Creative Capture? <Link to='/sign-up'>Please SignUp</Link>
-                                        </p>
+                                        {errors.password?.type === 'required' && <span className='text-red-600 font-bold text-lg mt-2'>Password is required</span>}
+
+                                        {errors.password?.type === 'minLength' && <span className='text-red-600 font-bold text-lg mt-2'>Password must have 6 characters</span>}
+
+                                        {errors.password?.type === 'pattern' && <p className='text-red-600 font-bold text-lg mt-2'>Password must have one uppercase, one number, one spacial character. </p>
+                                        }
                                     </div>
 
+                                    <p className=' mt-4 text-white'>
+                                        New to Creative Capture? <Link to='/sign-up'>Please SignUp</Link>
+                                    </p>
+
                                     <div className="form-control mt-6">
-                                        <input  className="btn bg-yellow-500 border-0 text-lg font-semibold" type="submit" value="Login" />
+                                        <input className="btn bg-yellow-500 border-0 text-lg font-semibold" type="submit" value="Login" />
                                     </div>
 
                                     <div className='flex items-center gap-5 px-5 mt-5'>
@@ -86,7 +103,8 @@ const Login = () => {
 
                                         <div className='h-[1px] bg-yellow-400 w-[50px]'></div>
                                     </div>
-                                    <button onClick={ handleGoogle} className="mx-auto my-5 btn bg-yellow-500 border-0 text-lg font-semibold w-full"><FcGoogle className='text-xl'/> Login With Google</button>
+
+                                    <button onClick={handleGoogle} className="mx-auto my-5 btn bg-yellow-500 border-0 text-lg font-semibold w-full"><FcGoogle className='text-xl' /> Login With Google</button>
                                 </div>
                             </div>
                         </div>

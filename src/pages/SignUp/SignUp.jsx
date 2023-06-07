@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Controls, Player } from '@lottiefiles/react-lottie-player';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from '../../Providers/AuthProvider';
 
@@ -10,6 +10,9 @@ import { AuthContext } from '../../Providers/AuthProvider';
 const SignUp = () => {
 
     const { googleSignIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
@@ -22,6 +25,7 @@ const SignUp = () => {
         googleSignIn()
             .then(result => {
                 const loggedUser = result.user;
+                navigate(from, { replace: true })
                 console.log(loggedUser);
             })
             .catch(error => {
