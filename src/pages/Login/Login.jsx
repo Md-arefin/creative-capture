@@ -1,6 +1,7 @@
 import { Controls, Player } from '@lottiefiles/react-lottie-player';
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
@@ -71,7 +72,7 @@ const Login = () => {
 
                                         <div className='h-[1px] bg-yellow-400 w-[50px]'></div>
                                     </div>
-                                    <button className="mx-auto my-5 btn bg-yellow-500 border-0 text-lg font-semibold w-full">Login With Google</button>
+                                    <button className="mx-auto my-5 btn bg-yellow-500 border-0 text-lg font-semibold w-full"><FcGoogle className='text-xl'/> Login With Google</button>
                                 </div>
                             </div>
                         </div>

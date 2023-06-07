@@ -7,7 +7,9 @@ const Footer = () => {
         <div>
             <footer className="footer p-10 bg-sky-950 text-neutral-content">
                 <div>
-                    <img width='150' src={logo} alt="" />
+                   <Link to='/'>
+                   <img className='rounded-2xl ' width='150' src={logo} alt="" />
+                   </Link>
                     <p className='text-2xl font-bold'>Creative Capture</p>
                 </div>
                 <div>

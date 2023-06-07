@@ -2,8 +2,7 @@ import React from 'react';
 import { Controls, Player } from '@lottiefiles/react-lottie-player';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
-import './SignUp.css'
-
+import { FcGoogle } from "react-icons/fc";
 const SignUp = () => {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -20,7 +19,7 @@ const SignUp = () => {
 
                 <div className="hero min-h-screen">
 
-                    <div className="hero-content flex-col lg:flex-row gap-10">
+                    <div className="hero-content flex-col lg:flex-row-reverse gap-10">
 
                         <div>
                             <Player
@@ -42,10 +41,28 @@ const SignUp = () => {
                                 <div className="card-body">
                                     <div className="form-control">
                                         <label className="label">
+                                            <span className="label-text text-white">Name</span>
+                                        </label>
+                                        <input type="text" placeholder="Enter your Name..."
+                                            {...register("name", { required: true })}
+                                            className="input input-bordered" />
+                                    </div>
+
+                                    <div className="form-control">
+                                        <label className="label">
                                             <span className="label-text text-white">Email</span>
                                         </label>
-                                        <input type="text" placeholder="email"
+                                        <input type="text" placeholder="Enter your Email..."
                                             {...register("email", { required: true })}
+                                            className="input input-bordered" />
+                                    </div>
+
+                                    <div className="form-control">
+                                        <label className="label">
+                                            <span className="label-text text-white">Photo url</span>
+                                        </label>
+                                        <input type="text" placeholder="Enter your photo url..."
+                                            {...register("photo", { required: true })}
                                             className="input input-bordered" />
                                     </div>
 
@@ -53,7 +70,7 @@ const SignUp = () => {
                                         <label className="label">
                                             <span className="label-text text-white">Password</span>
                                         </label>
-                                        <input type="password" placeholder="password"
+                                        <input type="password" placeholder="*********"
                                             {...register("password", { required: true })}
                                             className="input input-bordered" />
                                         <p className=' mt-4 text-white'>
@@ -73,7 +90,7 @@ const SignUp = () => {
                                         <div className='h-[1px] bg-yellow-400 w-[50px]'></div>
                                     </div>
 
-                                    <button className="mx-auto my-5 btn bg-yellow-500 border-0 text-lg font-semibold w-full">Login With Google</button>
+                                    <button className="mx-auto my-5 btn bg-yellow-500 border-0 text-lg font-semibold w-full"><FcGoogle className='text-xl'/> Login With Google</button>
                                 </div>
 
                             </div>
