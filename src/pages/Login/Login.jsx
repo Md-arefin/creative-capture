@@ -17,8 +17,6 @@ const Login = () => {
 
             <form onSubmit={handleSubmit(onSubmit)}>
 
-                {/*  */}
-
                 <div className="hero min-h-screen">
 
                     <div className="hero-content flex-col lg:flex-row gap-10">
@@ -61,16 +59,24 @@ const Login = () => {
                                             New to Creative Capture? <Link to='/sign-up'>Please SignUp</Link>
                                         </p>
                                     </div>
+
                                     <div className="form-control mt-6">
-                                        <button className="btn bg-yellow-500 border-0 text-lg font-semibold">Login</button>
+                                        <input  className="btn bg-yellow-500 border-0 text-lg font-semibold" type="submit" value="Login" />
                                     </div>
+
+                                    <div className='flex items-center gap-5 px-5 mt-5'>
+                                        <div className='h-[1px] bg-yellow-400 w-[50px]'></div>
+
+                                        <p className=' text-center text-white'> Login with social accounts</p>
+
+                                        <div className='h-[1px] bg-yellow-400 w-[50px]'></div>
+                                    </div>
+                                    <button className="mx-auto my-5 btn bg-yellow-500 border-0 text-lg font-semibold w-full">Login With Google</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                {/*  */}
             </form>
         </div>
     );
