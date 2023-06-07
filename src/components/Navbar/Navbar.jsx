@@ -6,7 +6,7 @@ import { AuthContext } from '../../Providers/AuthProvider';
 
 const Navbar = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
     const navItems = <>
         <li>
@@ -18,21 +18,31 @@ const Navbar = () => {
         <li>
             <Link to='/'>Classes</Link>
         </li>
-        <li>
-            <Link to='/'>Dashboard</Link>
-        </li>
-        <li>
-            <div className="avatar">
-                <div className="w-8 rounded">
-                    <img src={user?.photoURL} alt={user?.displayName} />
-                </div>
-            </div>
-        </li>
+        {
+            user && <>
+                <li>
+                    <Link to='/'>Dashboard</Link>
+                </li>
+                <li>
+                    <div className="avatar">
+                        <div className="w-8 rounded">
+                            <img src={user?.photoURL} alt={user?.displayName} />
+                        </div>
+                    </div>
+                </li>
+            </>
+        }
         <li>
             <Link to='/'>Update Classes</Link>
         </li>
 
     </>
+
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch(error => console.log(error))
+    }
 
     return (
         <div className='relative'>
@@ -61,7 +71,10 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to='/login' className="btn bg-yellow-500 text-black font-bold">Login</Link>
+                    {
+                        user ? <Link onClick={handleLogOut} className="btn bg-yellow-500 text-black font-bold">Log out</Link> :
+                            <Link to='/login' className="btn bg-yellow-500 text-black font-bold">Login</Link>
+                    }
                 </div>
             </div>
         </div>
