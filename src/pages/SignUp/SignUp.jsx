@@ -67,6 +67,7 @@ const SignUp = () => {
                                         <input type="text" placeholder="Enter your Name..."
                                             {...register("name", { required: true })}
                                             className="input input-bordered" />
+                                        {errors.name && <span className='text-red-600 font-bold text-lg mt-2'>Name field is required</span>}
                                     </div>
 
                                     <div className="form-control">
@@ -76,6 +77,7 @@ const SignUp = () => {
                                         <input type="text" placeholder="Enter your Email..."
                                             {...register("email", { required: true })}
                                             className="input input-bordered" />
+                                        {errors.email && <span className='text-red-600 font-bold text-lg mt-2'>Email field is required</span>}
                                     </div>
 
                                     <div className="form-control">
@@ -83,7 +85,7 @@ const SignUp = () => {
                                             <span className="label-text text-white">Photo url</span>
                                         </label>
                                         <input type="text" placeholder="Enter your photo url..."
-                                            {...register("photo", { required: true })}
+                                            {...register("photo")}
                                             className="input input-bordered" />
                                     </div>
 
@@ -92,12 +94,23 @@ const SignUp = () => {
                                             <span className="label-text text-white">Password</span>
                                         </label>
                                         <input type="password" placeholder="*********"
-                                            {...register("password", { required: true })}
+                                            {...register("password", {
+                                                required: true,
+                                                minLength: 6,
+                                                pattern: /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/
+                                            })}
                                             className="input input-bordered" />
-                                        <p className=' mt-4 text-white'>
-                                            Already have an account? <Link to='/login'>Please Login</Link>
-                                        </p>
+                                        {errors.password?.type === 'required' && <span className='text-red-600 font-bold text-lg mt-2'>Password is required</span>}
+
+                                        {errors.password?.type === 'minLength' && <span className='text-red-600 font-bold text-lg mt-2'>Password must have 6 characters</span>}
+
+                                        {errors.password?.type === 'pattern' && <p className='text-red-600 font-bold text-lg mt-2'>Password must have one uppercase, one number, one spacial character. </p>
+                                        }
                                     </div>
+
+                                    <p className=' mt-4 text-white'>
+                                        Already have an account? <Link to='/login'>Please Login</Link>
+                                    </p>
 
                                     <div className="form-control mt-6">
                                         <input className="btn bg-yellow-500 border-0 text-lg font-semibold" type="submit" value="Sign Up" />
