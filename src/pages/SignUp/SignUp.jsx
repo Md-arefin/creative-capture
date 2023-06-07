@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Controls, Player } from '@lottiefiles/react-lottie-player';
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -9,6 +9,8 @@ import { AuthContext } from '../../Providers/AuthProvider';
 
 const SignUp = () => {
 
+    const [error, setError] = useState('');
+
     const { googleSignIn, createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
@@ -16,7 +18,10 @@ const SignUp = () => {
 
     const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
 
+
     const onSubmit = data => {
+        setError('');
+
         console.log(data);
         createUser(data.email, data.password)
             .then(result => {
@@ -25,10 +30,11 @@ const SignUp = () => {
                 updateUserProfile({
                     displayName: data.name, photoURL: data.photo
                 })
-                // navigate(from, { replace: true })
+                navigate(from, { replace: true })
             })
             .catch(error => {
-                console.log(error);
+                console.log(error.message);
+                setError(error.message);
             })
 
     }
@@ -122,6 +128,10 @@ const SignUp = () => {
 
                                         {errors.password?.type === 'pattern' && <p className='text-red-600 font-bold text-lg mt-2'>Password must have one uppercase, one number, one spacial character. </p>
                                         }
+
+                                        <p className='text-red-600 font-bold text-lg mt-2'>
+                                            {error}
+                                        </p>
                                     </div>
 
                                     <p className=' mt-4 text-white'>

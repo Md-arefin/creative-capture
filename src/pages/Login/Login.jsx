@@ -1,5 +1,5 @@
 import { Controls, Player } from '@lottiefiles/react-lottie-player';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -7,19 +7,42 @@ import { AuthContext } from '../../Providers/AuthProvider';
 
 const Login = () => {
 
-    const { googleSignIn } = useContext(AuthContext);
+    const [error, setError] = useState('');
+
+    const { googleSignIn , signIn} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+
+
+    const onSubmit = data => {
+        setError('');
+        
+        console.log(data)
+
+        signIn(data.email , data.password)
+        .then(result =>{ 
+            const loggedUser = result.user;
+            navigate(from, {replace : true});
+            console.log(loggedUser)
+        })
+        .catch(error =>{
+            console.log(error.message)
+            setError(error.message)
+        })
+    };
 
     console.log(watch("example")); // watch input value by passing the name of it
 
     // {/* /* "handleSubmit" will validate your inputs before invoking "onSubmit" */ */}
 
+
+
     const handleGoogle = () => {
+        setError('')
+        
         googleSignIn()
             .then(result => {
                 const loggedUser = result.user;
@@ -27,7 +50,8 @@ const Login = () => {
                 navigate(from, { replace: true })
             })
             .catch(error => {
-                console.log(error);
+                console.log(error)
+                setError(error.message)
             })
     }
 
@@ -84,8 +108,10 @@ const Login = () => {
 
                                         {errors.password?.type === 'minLength' && <span className='text-red-600 font-bold text-lg mt-2'>Password must have 6 characters</span>}
 
-                                        {errors.password?.type === 'pattern' && <p className='text-red-600 font-bold text-lg mt-2'>Password must have one uppercase, one number, one spacial character. </p>
-                                        }
+                                        {errors.password?.type === 'pattern' && <p className='text-red-600 font-bold text-lg mt-2'>Password must have one uppercase, one number, one spacial character. </p>}
+                                        <p className='text-red-600 font-bold text-lg mt-2'>
+                                            {error}
+                                        </p>
                                     </div>
 
                                     <p className=' mt-4 text-white'>
