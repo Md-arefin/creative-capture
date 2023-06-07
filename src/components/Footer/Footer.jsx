@@ -5,10 +5,10 @@ import logo from '../../assets/logo.png'
 const Footer = () => {
     return (
         <div>
-            <footer className="footer p-10 bg-neutral text-neutral-content">
+            <footer className="footer p-10 bg-sky-950 text-neutral-content">
                 <div>
                     <img width='150' src={logo} alt="" />
-                    <p className='text-lg font-bold'>Creative Capture</p>
+                    <p className='text-2xl font-bold'>Creative Capture</p>
                 </div>
                 <div>
                     <span className="footer-title">Services</span>
@@ -39,6 +39,9 @@ const Footer = () => {
                     </div>
                 </div>
             </footer>
+            <div className="footer footer-center p-4 bg-base-300 text-base-content">
+                <p>Copyright © 2023 - All right reserved by Creative Capture Ltd</p>
+            </div>
         </div>
     );
 };
