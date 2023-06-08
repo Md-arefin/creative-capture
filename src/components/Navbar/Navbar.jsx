@@ -13,10 +13,10 @@ const Navbar = () => {
             <Link to='/' >Home</Link>
         </li>
         <li>
-            <Link to='/'>Instructors</Link>
+            <Link to='/instructors'>Instructors</Link>
         </li>
         <li>
-            <Link to='/'>Classes</Link>
+            <Link to='/classes'>Classes</Link>
         </li>
         {
             user &&
@@ -24,9 +24,6 @@ const Navbar = () => {
                 <Link to='/'>Dashboard</Link>
             </li>
         }
-        <li>
-            <Link to='/addClasses'>Update Classes</Link>
-        </li>
 
     </>
 
@@ -53,7 +50,6 @@ const Navbar = () => {
                             <img className='w-[100px]' src={logo} alt="" />
 
                             <h3 className='w-[160px] font-bold  hidden md:block  '>Creative Capture</h3>
-
                         </div>
                     </Link>
                 </div>
