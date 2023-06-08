@@ -19,7 +19,7 @@ const PopInstructor = () => {
 
                 {popularInstructor.map(items =>
                         <div  key={items._id} className="card w-full bg-base-100 shadow-xl">
-                            <figure><img className='h-[400px] w-[400px]' src={items.instructorImage} alt='' /></figure>
+                            <figure><img className='h-[400px] w-[410px]' src={items.instructorImage} alt='' /></figure>
                             <div className="card-body">
                                 <h2 className="card-title">{items.instructorName}</h2>
                                 <p><span className='font-semibold text-lg'>Experience: </span>{items.instructorExperience}</p>

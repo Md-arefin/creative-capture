@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PopularCard from '../../components/popularCard/PopularCard';
 import PopInstructor from '../../components/PopularInstructor/PopInstructor';
 import Slider from '../../components/Slider/Slider';
+import Students from '../../components/Students/Students';
 
 const Home = () => {
 
@@ -43,6 +44,19 @@ const Home = () => {
                 </div>
             </section>
 
+            {/* Extra section */}
+
+            <section className='my-16'>
+                <div className='mx-auto mb-16 pb-5'>
+                    <h3 className='text-center font-semibold text-2xl md:text-3xl '>
+                        Our Students
+                    </h3>
+                    <div className='mx-auto border-b-2 pb-5 w-[300px]'></div>
+                </div>
+                {/*  */}
+                <Students></Students>
+            </section>
+
             {/* Popular instructor */}
 
             <section className='my-16'>
@@ -54,7 +68,9 @@ const Home = () => {
                 </div>
                 {/*  */}
                 <PopInstructor></PopInstructor>
-                </section>
+            </section>
+
+
         </div>
     );
 };
