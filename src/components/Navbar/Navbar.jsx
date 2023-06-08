@@ -52,7 +52,7 @@ const Navbar = () => {
                         <div className='flex items-center justify-center gap-4 '>
                             <img className='w-[100px]' src={logo} alt="" />
 
-                            <h3 className='w-[160px] font-bold  hidden md:block'>Creative Capture</h3>
+                            <h3 className='w-[160px] font-bold  hidden md:block  '>Creative Capture</h3>
 
                         </div>
                     </Link>
