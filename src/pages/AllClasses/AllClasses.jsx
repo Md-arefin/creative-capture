@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 const AllClasses = () => {
 
     const [allClass, setAllClass] = useState([]);
-    console.log(allClass)
 
     useEffect(() => {
         fetch('http://localhost:5000/classes')
@@ -36,7 +35,7 @@ const AllClasses = () => {
                             <p><span className='font-semibold text-lg'>Instructor: </span>{classes.teacherName}</p>
                             <p><span className='font-semibold text-lg'>Total Students: </span>{classes.numberOfStudents}</p>
                             <p><span className='font-semibold text-lg'>Available Seats: </span> Nai.</p>
-                            <p className='font-semibold text-lg'>${classes.price}</p>
+                            <p className='font-semibold text-lg'><span>Price: </span>${classes.price}</p>
                             <div className="card-actions justify-end">
                                 <button className="btn bg-yellow-500 border-b-4 border-0 border-black ">Select Class</button>
                             </div>
