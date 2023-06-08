@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import PopularCard from '../../components/popularCard/PopularCard';
+import PopInstructor from '../../components/PopularInstructor/PopInstructor';
 import Slider from '../../components/Slider/Slider';
 
 const Home = () => {
 
     const [popularClass, setPopularClasses] = useState([]);
 
+
     useEffect(() => {
         fetch('http://localhost:5000/popularClass')
             .then(res => res.json())
             .then(data => setPopularClasses(data))
     }, [])
+
+
 
     return (
         <div>
@@ -20,10 +24,11 @@ const Home = () => {
 
             {/* popular class */}
             <section className='my-16'>
-                <div className='mb-16'>
-                    <h1 className='text-center font-semibold text-2xl md:text-3xl'>
-                        Our Popular Classes
+                <div className='mx-auto mb-16 '>
+                    <h1 className='text-center font-semibold text-2xl md:text-3xl '>
+                        Popular Classes
                     </h1>
+                    <div className='mx-auto border-b-2 pb-5 w-[300px]'></div>
                 </div>
                 {/* card */}
 
@@ -31,12 +36,25 @@ const Home = () => {
 
                     {
                         popularClass.map(classItem => (
-                            
+
                             <PopularCard key={classItem._id} classItem={classItem}></PopularCard>
                         ))
                     }
                 </div>
             </section>
+
+            {/* Popular instructor */}
+
+            <section className='my-16'>
+                <div className='mx-auto mb-16 pb-5'>
+                    <h3 className='text-center font-semibold text-2xl md:text-3xl '>
+                        Popular instructors
+                    </h3>
+                    <div className='mx-auto border-b-2 pb-5 w-[300px]'></div>
+                </div>
+                {/*  */}
+                <PopInstructor></PopInstructor>
+                </section>
         </div>
     );
 };
