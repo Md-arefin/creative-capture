@@ -139,7 +139,7 @@ const SignUp = () => {
                                     </p>
 
                                     <div className="form-control mt-6">
-                                        <input className="btn bg-yellow-500 border-0 text-lg font-semibold" type="submit" value="Sign Up" />
+                                        <input className="btn bg-yellow-500 border-b-4 border-0 border-black text-lg font-semibold" type="submit" value="Sign Up" />
                                     </div>
 
                                     <div className='flex items-center gap-5 px-5 mt-5'>
@@ -150,7 +150,7 @@ const SignUp = () => {
                                         <div className='h-[1px] bg-yellow-400 w-[50px]'></div>
                                     </div>
 
-                                    <button onClick={handleGoogle} className="mx-auto my-5 btn bg-yellow-500 border-0 text-lg font-semibold w-full"><FcGoogle className='text-xl' /> Login With Google</button>
+                                    <button onClick={handleGoogle} className="mx-auto my-5 btn bg-yellow-500 border-b-4 border-0 border-black  text-lg font-semibold w-full"><FcGoogle className='text-xl' /> Login With Google</button>
                                 </div>
 
                             </div>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const InstructorsPage = () => {
 
     const [sir, setSir] = useState([]);
-    console.log(sir)
+   
 
     useEffect(() => {
         fetch('http://localhost:5000/instructors')
@@ -17,7 +17,6 @@ const InstructorsPage = () => {
                 <img className='w-full h-[700px] opacity-50' src="https://i.ibb.co/qYF0VmD/flat-lay-photography-concept-black-background.jpg" alt="" />
             </div>
             <div>
-
                 <div className='mx-auto my-16 '>
                     <h1 className='text-center font-semibold text-2xl md:text-3xl '>
                         Our Instructors

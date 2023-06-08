@@ -19,7 +19,7 @@ const ErrorPage = () => {
             </div>
             <Link to='/'>
                 <div className='text-center'>
-                    <button className="btn bg-yellow-500 border-0 text-black ">Back to Home</button>
+                    <button className="btn bg-yellow-500 border-b-4 border-0 border-black  text-black ">Back to Home</button>
                 </div>
             </Link>
         </div>
