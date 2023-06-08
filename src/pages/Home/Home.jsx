@@ -24,7 +24,7 @@ const Home = () => {
             <Slider />
 
             {/* popular class */}
-            <section className='my-16'>
+            <section className='my-16 pb-16'>
                 <div className='mx-auto mb-16 '>
                     <h1 className='text-center font-semibold text-2xl md:text-3xl '>
                         Popular Classes
@@ -46,7 +46,7 @@ const Home = () => {
 
             {/* Extra section */}
 
-            <section className='my-16'>
+            <section className='my-16 bg-gray-300 py-16'>
                 <div className='mx-auto mb-16 pb-5'>
                     <h3 className='text-center font-semibold text-2xl md:text-3xl '>
                         Our Students
