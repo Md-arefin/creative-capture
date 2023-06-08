@@ -4,6 +4,7 @@ import {
 import Main from "../Layout/Main";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home";
+import AddClasses from "../pages/Instructor/AddClasses";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 
@@ -16,6 +17,10 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
+            },
+            {
+                path:'addClasses',
+                element: <AddClasses></AddClasses>
             }
         ]
     },
