@@ -14,6 +14,9 @@ const PopularCard = ({ classItem }) => {
                 <p><span className='font-semibold text-lg'>Instructor: </span>{teacherName}</p>
                 <p><span className='font-semibold text-lg'>Total Students: </span>{numberOfStudents}</p>
                 <p className='font-semibold text-lg'>${price}</p>
+                <div className="card-actions justify-end">
+                    <button className="btn bg-yellow-500 border-b-4 border-0 border-black ">Select Class</button>
+                </div>
             </div>
         </div>
 
