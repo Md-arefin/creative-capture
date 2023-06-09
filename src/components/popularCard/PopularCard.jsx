@@ -1,9 +1,59 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const PopularCard = ({ classItem }) => {
 
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+
     const { _id, classImage, classTitle, numberOfStudents, price, teacherName
     } = classItem;
+
+    const handleSelectClass = classItem => {
+        console.log(classItem)
+        if (user && user.email) {
+            const selectedClass = {
+                classItemId: _id,
+                classImage, classTitle, numberOfStudents, price, teacherName, email: user.email
+            }
+            fetch('http://localhost:5000/classSelected', {
+                method: 'POST',
+                headers: {
+                    'content-type': "application/json"
+                },
+                body: JSON.stringify(selectedClass)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Your class has been selected',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                })
+        }
+        else {
+            Swal.fire({
+                title: 'Please login to select classes',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login now!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login', { state: { from: location } });
+                }
+            })
+        }
+    }
 
     return (
 
@@ -15,7 +65,7 @@ const PopularCard = ({ classItem }) => {
                 <p><span className='font-semibold text-lg'>Total Students: </span>{numberOfStudents}</p>
                 <p className='font-semibold text-lg'>${price}</p>
                 <div className="card-actions justify-end">
-                    <button className="btn bg-yellow-500 border-b-4 border-0 border-black ">Select Class</button>
+                    <button onClick={() => handleSelectClass(classItem)} className="btn bg-yellow-500 border-b-4 border-0 border-black ">Select Class</button>
                 </div>
             </div>
         </div>
