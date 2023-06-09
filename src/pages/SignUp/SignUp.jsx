@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 
 
@@ -22,7 +23,7 @@ const SignUp = () => {
     const onSubmit = data => {
         setError('');
 
-        console.log(data);
+        // console.log(data);
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
@@ -31,6 +32,13 @@ const SignUp = () => {
                     displayName: data.name, photoURL: data.photo
                 })
                 navigate(from, { replace: true })
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Sign up Successful',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
             })
             .catch(error => {
                 console.log(error.message);
@@ -49,6 +57,13 @@ const SignUp = () => {
                 const loggedUser = result.user;
                 navigate(from, { replace: true });
                 console.log(loggedUser);
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Sign up Successful',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
             })
             .catch(error => {
                 console.log(error);

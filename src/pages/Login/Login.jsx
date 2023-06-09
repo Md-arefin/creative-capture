@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../Providers/AuthProvider';
 
 const Login = () => {
@@ -20,12 +21,19 @@ const Login = () => {
     const onSubmit = data => {
         setError('');
         
-        console.log(data)
+        // console.log(data)
 
         signIn(data.email , data.password)
         .then(result =>{ 
             const loggedUser = result.user;
             navigate(from, {replace : true});
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Login Successful',
+                showConfirmButton: false,
+                timer: 1500
+              })
             console.log(loggedUser)
         })
         .catch(error =>{
@@ -34,7 +42,7 @@ const Login = () => {
         })
     };
 
-    console.log(watch("example")); // watch input value by passing the name of it
+    // console.log(watch("example")); // watch input value by passing the name of it
 
     // {/* /* "handleSubmit" will validate your inputs before invoking "onSubmit" */ */}
 
@@ -48,6 +56,13 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 navigate(from, { replace: true })
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Login Successful',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
             })
             .catch(error => {
                 console.log(error)
