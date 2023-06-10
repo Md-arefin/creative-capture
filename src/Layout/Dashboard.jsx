@@ -1,8 +1,12 @@
 import React, { useContext } from 'react';
-import { Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import Footer from '../components/Footer/Footer';
 import Navbar from '../components/Navbar/Navbar';
 import { AuthContext } from '../Providers/AuthProvider';
+import { SiGoogleclassroom } from "react-icons/si";
+import { BiWallet } from "react-icons/bi";
+import { MdOutlinePayment } from "react-icons/md";
+import { TbChartHistogram } from "react-icons/tb";
 
 const Dashboard = () => {
 
@@ -37,8 +41,35 @@ const Dashboard = () => {
                                 <h3 className='my-5'>{user?.email}</h3>
                             </div> : ""
                         }
-                        <li><a>Sidebar Item 1</a></li>
-                        <li><a>Sidebar Item 2</a></li>
+                        {
+                            user ?
+                                <div className='space-y-5 text-black'>
+                                    <li>
+                                        <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
+                                            <SiGoogleclassroom className='text-2xl md:text-3xl text-black ' />
+                                            <NavLink to='/dashboard/selected'>Selected Classes</NavLink>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
+                                            <MdOutlinePayment className='text-2xl md:text-3xl text-black ' />
+                                            <NavLink >Enrolled classes</NavLink>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
+                                            <BiWallet className='text-2xl md:text-3xl text-black ' />
+                                            <NavLink>Payments</NavLink>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
+                                            <TbChartHistogram className='text-2xl md:text-3xl text-black ' />
+                                            <NavLink >Payment history</NavLink>
+                                        </div>
+                                    </li>
+                                </div> : " "
+                        }
                     </ul>
                 </div>
             </div>
