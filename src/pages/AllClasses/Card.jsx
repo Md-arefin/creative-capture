@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
 import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
-const PopularCard = ({ classItem }) => {
+const Card = ({ classes }) => {
 
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
     const { _id, classImage, classTitle, numberOfStudents, price, teacherName
-    } = classItem;
+    } = classes;
 
     const handleSelectClass = classItem => {
         console.log(classItem)
@@ -56,21 +56,20 @@ const PopularCard = ({ classItem }) => {
     }
 
     return (
-
         <div className="card w-full bg-base-100 shadow-xl">
             <figure><img src={classImage} alt={classTitle} /></figure>
             <div className="card-body">
                 <h2 className="card-title">{classTitle}</h2>
                 <p><span className='font-semibold text-lg'>Instructor: </span>{teacherName}</p>
                 <p><span className='font-semibold text-lg'>Total Students: </span>{numberOfStudents}</p>
-                <p className='font-semibold text-lg'>${price}</p>
+                <p><span className='font-semibold text-lg'>Available Seats: </span> Nai.</p>
+                <p className='font-semibold text-lg'><span>Price: </span>${price}</p>
                 <div className="card-actions justify-end">
-                    <button onClick={() => handleSelectClass(classItem)} className="btn bg-yellow-500 border-b-4 border-0 border-black ">Select Class</button>
+                    <button onClick={() => handleSelectClass(classes)} className="btn bg-yellow-500 border-b-4 border-0 border-black ">Select Class</button>
                 </div>
             </div>
         </div>
-
     );
 };
 
-export default PopularCard;
+export default Card;
