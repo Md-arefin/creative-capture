@@ -1,16 +1,57 @@
 import React from 'react';
 import useClassQuery from '../../../../components/Hook/useClassQuery';
-import {FaTrashAlt} from 'react-icons/fa';
+import { FaTrashAlt} from "react-icons/fa";
+import Swal from 'sweetalert2';
+
 
 const Selected = () => {
-    const [classes] = useClassQuery();
+    const [classes, refetch] = useClassQuery();
 
+    const total = classes.reduce((sum, item) => item.price + sum , 0);
+
+    const handleDelete = item =>{
+        console.log(item)
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/classSelected/${item._id}`, {
+                    method : "DELETE"
+                })
+                .then(res => res.json())
+                .then(data =>{
+                    if(data.deletedCount > 0){
+                        refetch()
+                        Swal.fire(
+                                'Deleted!',
+                                'Your class has been deleted.',
+                                'success'
+                                )
+                    }
+                }) 
+            }
+          })
+    }
 
     return (
         <div>
-            <div className='flex justify-between items-center'>
-                <h3 className='text-lg text-black font-semibold'>My selected classes:  {classes?.length}</h3>
-                <h3 className='text-lg text-black font-semibold'>Total amount: $ {classes?.length}</h3>
+             <div className='mx-auto my-16  '>
+                    <div className='flex justify-center items-center gap-5'>  
+                        <h1 className='text-center font-semibold text-2xl md:text-3xl '>
+                           Class selected to purchase
+                        </h1>
+                    </div>
+                    <div className='mx-auto border-b-2 pb-5 w-[500px]'></div>
+                </div>
+            <div className='flex justify-between items-center px-10'>
+               
+                <h3 className='text-lg text-black font-semibold'>Total amount: $ {total.toFixed(2)}</h3>
                 <button  className="btn bg-yellow-500 border-b-4 border-0 border-black ">Pay Now</button>
             </div>
             <div className="overflow-x-auto max-w-full mb-16 border-black border-2 rounded-lg my-10">
@@ -65,7 +106,7 @@ const Selected = () => {
                                     ${item.price}
                                 </td>
                                 <td className='text-center'>
-                                    <button className="btn bg-red-500 border-black border-0 border-b-2 "><FaTrashAlt/></button>
+                                    <button onClick={()=> handleDelete(item)} className="btn bg-red-500 border-black border-0 border-b-2 "><FaTrashAlt/></button>
                                 </td>
                             </tr>)
                         }

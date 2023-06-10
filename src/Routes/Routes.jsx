@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: 'selected',
-                element: <Selected></Selected>
+                element:<PrivateRoutes> <Selected></Selected></PrivateRoutes>
             }
         ]
     }
