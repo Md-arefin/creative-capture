@@ -33,9 +33,10 @@ const InstructorsPage = () => {
                                #
                             </th>
                             <th className='text-lg text-black'>Instructors Name</th>
-                            <th className='text-lg text-black'>Experiences</th>
-                            <th className='text-lg text-black'>Total Classes</th>
-                            <th className='text-lg text-black'>Total Students</th>
+                            <th className='text-lg text-black text-center'>Experiences</th>
+                            <th className='text-lg text-black text-center'>Total Classes</th>
+                            <th className='text-lg text-black text-center'>Total Students</th>
+                            <th className='text-lg text-black text-center'>See Classes</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,7 +68,7 @@ const InstructorsPage = () => {
                                 <td  className='text-center'>
                                   {sir.numberOfStudents}
                                 </td>
-                                <td>
+                                <td  className='text-center'>
                                 <button className="btn  bg-yellow-500 border-b-4 border-0 border-black ">See Classes</button>
                                 </td>
                             </tr>)

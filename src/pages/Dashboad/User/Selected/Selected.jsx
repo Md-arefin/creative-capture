@@ -1,6 +1,6 @@
 import React from 'react';
 import useClassQuery from '../../../../components/Hook/useClassQuery';
-import {FaTrash} from 'react-icons/fa';
+import {FaTrashAlt} from 'react-icons/fa';
 
 const Selected = () => {
     const [classes] = useClassQuery();
@@ -26,7 +26,7 @@ const Selected = () => {
                             <th className='text-lg text-black text-center'>Class Title</th>
                             <th className='text-lg text-black'>Instructor</th>
                             <th className='text-lg text-black'>Total students</th>
-                            <th className='text-lg text-black'>Available sits</th>
+                            <th className='text-lg text-black'>Available seats</th>
                             <th className='text-lg text-black'>Price</th>
                             <th className='text-lg text-black'>Delete</th>
                         </tr>
@@ -65,7 +65,7 @@ const Selected = () => {
                                     ${item.price}
                                 </td>
                                 <td className='text-center'>
-                                    <button className="btn bg-red-500"><FaTrash/></button>
+                                    <button className="btn bg-red-500 border-black border-0 border-b-2 "><FaTrashAlt/></button>
                                 </td>
                             </tr>)
                         }
