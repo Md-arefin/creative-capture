@@ -11,7 +11,7 @@ const PopularCard = ({ classItem }) => {
     const location = useLocation();
     const [, refetch] = useClassQuery();
 
-    const { _id, classImage, classTitle, numberOfStudents, price, teacherName
+    const { _id, classImage, classTitle, numberOfStudents,AvailableSits, price, teacherName
     } = classItem;
 
     const handleSelectClass = classItem => {
@@ -66,7 +66,8 @@ const PopularCard = ({ classItem }) => {
                 <h2 className="card-title">{classTitle}</h2>
                 <p><span className='font-semibold text-lg'>Instructor: </span>{teacherName}</p>
                 <p><span className='font-semibold text-lg'>Total Students: </span>{numberOfStudents}</p>
-                <p className='font-semibold text-lg'>${price}</p>
+                <p><span className='font-semibold text-lg'>Available Seats: </span>{AvailableSits}</p>
+                <p><span className='font-semibold text-lg'>Price </span>${price}</p>
                 <div className="card-actions justify-end">
                     <button onClick={() => handleSelectClass(classItem)} className="btn bg-yellow-500 border-b-4 border-0 border-black ">Select Class</button>
                 </div>

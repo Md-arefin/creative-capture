@@ -9,7 +9,7 @@ const Card = ({ classes }) => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const { _id, classImage, classTitle, numberOfStudents, price, teacherName
+    const { _id, classImage, classTitle, numberOfStudents, price, teacherName, AvailableSits
     } = classes;
 
     const handleSelectClass = classItem => {
@@ -17,7 +17,7 @@ const Card = ({ classes }) => {
         if (user && user.email) {
             const selectedClass = {
                 classItemId: _id,
-                classImage, classTitle, numberOfStudents, price, teacherName, email: user.email
+                classImage, classTitle, numberOfStudents, price, teacherName, email: user.email,AvailableSits
             }
             fetch('https://summer-lens-learning-server-md-arefin.vercel.app/classSelected', {
                 method: 'POST',
@@ -62,8 +62,8 @@ const Card = ({ classes }) => {
                 <h2 className="card-title">{classTitle}</h2>
                 <p><span className='font-semibold text-lg'>Instructor: </span>{teacherName}</p>
                 <p><span className='font-semibold text-lg'>Total Students: </span>{numberOfStudents}</p>
-                <p><span className='font-semibold text-lg'>Available Seats: </span> Nai.</p>
-                <p className='font-semibold text-lg'><span>Price: </span>${price}</p>
+                <p><span className='font-semibold text-lg'>Available Seats: </span> {AvailableSits}</p>
+                <p><span className='font-semibold text-lg'>Price: </span>${price}</p>
                 <div className="card-actions justify-end">
                     <button onClick={() => handleSelectClass(classes)} className="btn bg-yellow-500 border-b-4 border-0 border-black ">Select Class</button>
                 </div>

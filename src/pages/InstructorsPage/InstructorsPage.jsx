@@ -61,8 +61,7 @@ const InstructorsPage = () => {
                                     </div>
                                 </td>
                                 <td>
-                                    {sir.instructorExperience
-}
+                                    {sir.instructorExperience}
                                 </td>
                                 <td>{sir.numberOfClasses}</td>
                                 <th>
