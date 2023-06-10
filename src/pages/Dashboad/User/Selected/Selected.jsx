@@ -10,6 +10,7 @@ const Selected = () => {
         <div>
             <div className='flex justify-between items-center'>
                 <h3 className='text-lg text-black font-semibold'>My selected classes:  {classes?.length}</h3>
+                <h3 className='text-lg text-black font-semibold'>Total amount: $ {classes?.length}</h3>
                 <button  className="btn bg-yellow-500 border-b-4 border-0 border-black ">Pay Now</button>
             </div>
             <div className="overflow-x-auto max-w-full mb-16 border-black border-2 rounded-lg my-10">

@@ -66,16 +66,17 @@ const Dashboard = () => {
                                     </li>
                                     <li>
                                         <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
-                                            <MdOutlinePayment className='text-2xl md:text-3xl text-black ' />
-                                            <NavLink >Enrolled classes</NavLink>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
                                             <BiWallet className='text-2xl md:text-3xl text-black ' />
                                             <NavLink>Payments</NavLink>
                                         </div>
                                     </li>
+                                    <li>
+                                        <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
+                                            <MdOutlinePayment className='text-2xl md:text-3xl text-black ' />
+                                            <NavLink >Enrolled classes</NavLink>
+                                        </div>
+                                    </li>
+                                   
                                     <li>
                                         <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
                                             <TbChartHistogram className='text-2xl md:text-3xl text-black ' />

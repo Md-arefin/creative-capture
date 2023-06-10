@@ -24,7 +24,7 @@ const InstructorsPage = () => {
                     <div className='mx-auto border-b-2 pb-5 w-[300px]'></div>
                 </div>
             </div>
-            <div className="overflow-x-auto mb-16">
+            <div className="overflow-x-auto mb-16 border-black border-2 rounded-lg">
                 <table className="table">
                     {/* head */}
                     <thead>
@@ -32,8 +32,8 @@ const InstructorsPage = () => {
                             <th className='text-lg text-black'>
                                #
                             </th>
-                            <th className='text-lg text-black'>Name</th>
-                            <th className='text-lg text-black'>Experience</th>
+                            <th className='text-lg text-black'>Instructors Name</th>
+                            <th className='text-lg text-black'>Experiences</th>
                             <th className='text-lg text-black'>Total Classes</th>
                             <th className='text-lg text-black'>Total Students</th>
                         </tr>
@@ -60,13 +60,16 @@ const InstructorsPage = () => {
                                         </div>
                                     </div>
                                 </td>
-                                <td>
+                                <td  className='text-center'>
                                     {sir.instructorExperience}
                                 </td>
-                                <td>{sir.numberOfClasses}</td>
-                                <th>
+                                <td  className='text-center'>{sir.numberOfClasses}</td>
+                                <td  className='text-center'>
                                   {sir.numberOfStudents}
-                                </th>
+                                </td>
+                                <td>
+                                <button className="btn  bg-yellow-500 border-b-4 border-0 border-black ">See Classes</button>
+                                </td>
                             </tr>)
                         }
                       
