@@ -31,19 +31,33 @@ const Dashboard = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
                         {/* Sidebar content here */}
-                        {
+                        {/* {
                             user ? <div className='text-center my-10'>
                                 <div className="avatar">
                                     <div className="w-24 rounded-full">
                                         <img src={user?.photoURL} />
                                     </div>
                                 </div>
-                                <h3 className='my-5'>{user?.email}</h3>
+                                <div>
+                                    <h3 className='my-5 text-xl '>{user.displayName}</h3>
+                                    <h3 className='my-5 text-md'>{user?.email}</h3>
+                                </div>
                             </div> : ""
-                        }
+                        } */}
                         {
                             user ?
                                 <div className='space-y-5 text-black'>
+                                    <div className='text-center my-10'>
+                                        <div className="avatar">
+                                            <div className="w-24 rounded-full">
+                                                <img src={user?.photoURL} />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h3 className='my-5 text-xl '>{user.displayName}</h3>
+                                            <h3 className='my-5 text-md'>{user?.email}</h3>
+                                        </div>
+                                    </div>
                                     <li>
                                         <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
                                             <SiGoogleclassroom className='text-2xl md:text-3xl text-black ' />

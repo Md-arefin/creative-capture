@@ -2,12 +2,14 @@ import React, { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Providers/AuthProvider';
+import useClassQuery from '../Hook/useClassQuery';
 
 const PopularCard = ({ classItem }) => {
 
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const [, refetch] = useClassQuery();
 
     const { _id, classImage, classTitle, numberOfStudents, price, teacherName
     } = classItem;
@@ -29,6 +31,7 @@ const PopularCard = ({ classItem }) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.insertedId) {
+                        refetch();
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
