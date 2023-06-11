@@ -59,11 +59,11 @@ const Home = () => {
                 <div className='mx-auto mb-16 pb-5'>
                     <div className='flex justify-center items-center gap-5'>
                         <FaUserGraduate className='text-2xl md:text-3xl ' />
-                        <h3 className='text-center font-semibold text-2xl md:text-3xl '>
-                            Our Students
+                        <h3 className='text-center font-semibold text-xl md:text-3xl '>
+                        The Art of Photography
                         </h3>
                     </div>
-                    <div className='mx-auto border-b-2 pb-5 w-[300px]'></div>
+                    <div className='mx-auto border-b-2 pb-5 w-[300px]  md:w-[600px]'></div>
                 </div>
                 {/*  */}
                 <Students></Students>
