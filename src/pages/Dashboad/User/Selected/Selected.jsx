@@ -22,7 +22,7 @@ const Selected = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://summer-lens-learning-server-md-arefin.vercel.app/classSelected/${item._id}`, {
+                fetch(`http://localhost:5000/classSelected/${item._id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

@@ -14,7 +14,7 @@ const Home = () => {
 
 
     useEffect(() => {
-        fetch('https://summer-lens-learning-server-md-arefin.vercel.app/popularClass')
+        fetch('http://localhost:5000/popularClass')
             .then(res => res.json())
             .then(data => setPopularClasses(data))
     }, [])
