@@ -5,7 +5,6 @@ import Navbar from '../components/Navbar/Navbar';
 import { AuthContext } from '../Providers/AuthProvider';
 import { SiGoogleclassroom } from "react-icons/si";
 import { BiWallet } from "react-icons/bi";
-import { MdOutlinePayment } from "react-icons/md";
 import { TbChartHistogram } from "react-icons/tb";
 
 const Dashboard = () => {
@@ -31,7 +30,7 @@ const Dashboard = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
                         {/* Sidebar content here */}
-                        
+
                         {
                             user ?
                                 <div className='space-y-5 text-black'>
@@ -52,19 +51,14 @@ const Dashboard = () => {
                                             <NavLink to='/dashboard/selected'>Selected Classes</NavLink>
                                         </div>
                                     </li>
+    
                                     <li>
                                         <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
                                             <BiWallet className='text-2xl md:text-3xl text-black ' />
-                                            <NavLink>Payments</NavLink>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
-                                            <MdOutlinePayment className='text-2xl md:text-3xl text-black ' />
                                             <NavLink >Enrolled classes</NavLink>
                                         </div>
                                     </li>
-                                   
+
                                     <li>
                                         <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
                                             <TbChartHistogram className='text-2xl md:text-3xl text-black ' />

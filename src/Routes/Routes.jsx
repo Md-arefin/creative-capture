@@ -12,6 +12,7 @@ import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import Selected from "../pages/Dashboad/User/Selected/Selected";
 import PrivateRoutes from "./PrivateRoutes";
+import Payment from "../pages/Dashboad/User/Payment/Payment";
 
 export const router = createBrowserRouter([
     {
@@ -51,7 +52,11 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: 'selected',
-                element:<PrivateRoutes> <Selected></Selected></PrivateRoutes>
+                element:<Selected></Selected>
+            },
+            {
+                path: 'payment',
+                element: <Payment></Payment>
             }
         ]
     }

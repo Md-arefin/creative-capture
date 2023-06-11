@@ -9,7 +9,7 @@ const useClassQuery = () => {
     const { data: classes = [], refetch } = useQuery({
         queryKey: ['classSelected', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/classSelected?email=${user?.email}`)
+            const res = await fetch(`https://summer-lens-learning-server-md-arefin.vercel.app/classSelected?email=${user?.email}`)
             return res.json()
         },
     })

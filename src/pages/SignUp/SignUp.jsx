@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Controls, Player } from '@lottiefiles/react-lottie-player';
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
@@ -14,8 +14,7 @@ const SignUp = () => {
 
     const { googleSignIn, createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || '/';
+
 
     const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
 
@@ -30,15 +29,31 @@ const SignUp = () => {
                 console.log(loggedUser);
                 updateUserProfile({
                     displayName: data.name, photoURL: data.photo
+                }).then(() => {
+                    const saveUser = { name: data.name, email: data.email }
+                    fetch('http://localhost:5000/users', {
+                        method: "POST",
+                        headers: {
+                            'content-type': "application/json"
+                        },
+                        body: JSON.stringify(saveUser)
+                    })
+                        .then(res => res.json(saveUser))
+                        .then(data => {
+                            if (data.insertedId) {
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: 'Sign up Successful',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
+                        })
                 })
-                navigate(from, { replace: true })
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Sign up Successful',
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
+
+                navigate('/')
+
             })
             .catch(error => {
                 console.log(error.message);
@@ -55,15 +70,28 @@ const SignUp = () => {
         googleSignIn()
             .then(result => {
                 const loggedUser = result.user;
-                navigate(from, { replace: true });
+                navigate('/');
                 console.log(loggedUser);
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Sign up Successful',
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
+                const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
+                    fetch('http://localhost:5000/users', {
+                        method: "POST",
+                        headers: {
+                            'content-type': "application/json"
+                        },
+                        body: JSON.stringify(saveUser)
+                    })
+                        .then(res => res.json(saveUser))
+                        .then(data => {
+                            if (data.insertedId) {
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: 'Sign up Successful',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
+                        })
             })
             .catch(error => {
                 console.log(error);
