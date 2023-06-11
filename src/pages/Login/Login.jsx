@@ -64,9 +64,8 @@ const Login = () => {
                     body: JSON.stringify(saveUser)
                 })
                     .then(res => res.json(saveUser))
-                    .then(data => {
-                        if (data.insertedId) {
-                            navigate(from, { replace: true })
+                    .then( () => {
+                         navigate(from, { replace: true })
                             Swal.fire({
                                 position: 'center',
                                 icon: 'success',
@@ -74,7 +73,6 @@ const Login = () => {
                                 showConfirmButton: false,
                                 timer: 1500
                             })
-                        }
                     })
             })
             .catch(error => {

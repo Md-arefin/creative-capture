@@ -81,17 +81,16 @@ const SignUp = () => {
                         body: JSON.stringify(saveUser)
                     })
                         .then(res => res.json(saveUser))
-                        .then(data => {
-                            if (data.insertedId) {
-                                Swal.fire({
-                                    position: 'center',
-                                    icon: 'success',
-                                    title: 'Sign up Successful',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                })
-                            }
-                        })
+                        .then( () => {
+                            navigate(from, { replace: true })
+                               Swal.fire({
+                                   position: 'center',
+                                   icon: 'success',
+                                   title: 'Sign up Successful',
+                                   showConfirmButton: false,
+                                   timer: 1500
+                               })
+                       })
             })
             .catch(error => {
                 console.log(error);
@@ -193,7 +192,7 @@ const SignUp = () => {
                                         <div className='h-[1px] bg-yellow-400 w-[50px]'></div>
                                     </div>
 
-                                    <button onClick={handleGoogle} className="mx-auto my-5 btn bg-yellow-500 border-b-4 border-0 border-black  text-lg font-semibold w-full"><FcGoogle className='text-xl' /> Login With Google</button>
+                                    <button onClick={handleGoogle} className="mx-auto my-5 btn bg-yellow-500 border-b-4 border-0 border-black  text-lg font-semibold w-full"><FcGoogle className='text-xl' /> SignUp With Google</button>
                                 </div>
 
                             </div>
