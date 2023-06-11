@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Controls, Player } from '@lottiefiles/react-lottie-player';
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';

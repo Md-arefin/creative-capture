@@ -13,6 +13,8 @@ import SignUp from "../pages/SignUp/SignUp";
 import Selected from "../pages/Dashboad/User/Selected/Selected";
 import PrivateRoutes from "./PrivateRoutes";
 import Payment from "../pages/Dashboad/User/Payment/Payment";
+import ManageUsers from "../pages/Dashboad/Admin/ManageUsers/ManageUsers";
+import ManageClasses from "../pages/Dashboad/Admin/ManageClasses/ManageClasses";
 
 export const router = createBrowserRouter([
     {
@@ -57,6 +59,15 @@ export const router = createBrowserRouter([
             {
                 path: 'payment',
                 element: <Payment></Payment>
+            },
+            // ADMIN ROUTES
+            {
+                path: 'manageUsers',
+                element: <ManageUsers></ManageUsers>
+            },
+            {
+                path: 'manageClasses',
+                element: <ManageClasses></ManageClasses>
             }
         ]
     }
