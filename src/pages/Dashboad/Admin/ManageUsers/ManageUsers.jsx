@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
-import { FaTrashAlt, FaUserEdit } from 'react-icons/fa';
+import React from 'react';
+import { FaTrashAlt, FaUserEdit, FaUsers } from 'react-icons/fa';
 import { GrUserAdmin } from 'react-icons/gr';
 import Swal from 'sweetalert2';
 
@@ -12,42 +12,42 @@ const ManageUsers = () => {
         return res.json();
     })
 
-    const handleMakeAdmin = user =>{
-        fetch(`http://localhost:5000/users/admin/${user._id}`,{
+    const handleMakeAdmin = user => {
+        fetch(`http://localhost:5000/users/admin/${user._id}`, {
             method: "PATCH"
-        }).then( res => res.json())
-        .then(data=> {
-            console.log(data)
-            if(data.modifiedCount){
-                refetch()
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: `${user.name} is an admin now!!`,
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-            }
-        })
+        }).then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    refetch()
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: `${user.name} is an admin now!!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
     }
 
-    const handleMakeInstructor = user =>{
-        fetch(`http://localhost:5000/users/instructor/${user._id}`,{
+    const handleMakeInstructor = user => {
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
             method: "PATCH"
-        }).then( res => res.json())
-        .then(data=> {
-            console.log(data)
-            if(data.modifiedCount){
-                refetch()
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: `${user.name} is a instructor now!!`,
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-            }
-        })
+        }).then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    refetch()
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: `${user.name} is a instructor now!!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
     }
 
     const handleDelete = item => {
@@ -83,8 +83,15 @@ const ManageUsers = () => {
     return (
         <>
             <section className='my-16'>
-                <h1 className='text-center my-10 '><span className='text-lg font-semibold'>Total users: </span> {users.length}</h1>
-
+                <div className='mx-auto mb-16 '>
+                    <div className='flex justify-center items-center gap-5'>
+                        <FaUsers className='text-2xl md:text-3xl ' />
+                        <h1 className='text-center font-semibold text-2xl md:text-3xl '>
+                            All Users
+                        </h1>
+                    </div>
+                    <div className='mx-auto border-b-2 pb-5 w-[300px]'></div>
+                </div>
                 {/* user table */}
                 <div className="overflow-x-auto border-black border-2 rounded-lg">
                     <table className="table">
@@ -118,11 +125,11 @@ const ManageUsers = () => {
                                         </td>
                                         <td className='text-center'>
                                             <div className='flex justify-between items-center gap-5'>
-                                                <button disabled={item.role === "admin"} onClick={()=> handleMakeAdmin(item)} className="btn  bg-yellow-500 border-b-4 border-0 border-black hover:text-black"> <GrUserAdmin/> Make Admin </button>
+                                                <button disabled={item.role === "admin"} onClick={() => handleMakeAdmin(item)} className="btn  bg-yellow-500 border-b-4 border-0 border-black hover:text-black"> <GrUserAdmin /> Make Admin </button>
 
                                                 <button
-                                                disabled={item.role === "instructor"}
-                                                 onClick={()=> handleMakeInstructor(item)} className="btn bg-yellow-500 border-b- border-0 border-black hover:text-black"> <FaUserEdit/> Make Instructor</button>
+                                                    disabled={item.role === "instructor"}
+                                                    onClick={() => handleMakeInstructor(item)} className="btn bg-yellow-500 border-b- border-0 border-black hover:text-black"> <FaUserEdit /> Make Instructor</button>
                                             </div>
                                         </td>
                                         <td className='text-center'>
