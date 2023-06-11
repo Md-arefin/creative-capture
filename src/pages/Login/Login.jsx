@@ -10,7 +10,7 @@ const Login = () => {
 
     const [error, setError] = useState('');
 
-    const { googleSignIn , signIn} = useContext(AuthContext);
+    const { googleSignIn, signIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -20,26 +20,26 @@ const Login = () => {
 
     const onSubmit = data => {
         setError('');
-        
+
         // console.log(data)
 
-        signIn(data.email , data.password)
-        .then(result =>{ 
-            const loggedUser = result.user;
-            navigate(from, {replace : true});
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Login Successful',
-                showConfirmButton: false,
-                timer: 1500
-              })
-            console.log(loggedUser)
-        })
-        .catch(error =>{
-            console.log(error.message)
-            setError(error.message)
-        })
+        signIn(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                navigate(from, { replace: true });
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Login Successful',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                console.log(loggedUser)
+            })
+            .catch(error => {
+                console.log(error.message)
+                setError(error.message)
+            })
     };
 
     // console.log(watch("example")); // watch input value by passing the name of it
@@ -50,19 +50,32 @@ const Login = () => {
 
     const handleGoogle = () => {
         setError('')
-        
+
         googleSignIn()
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                navigate(from, { replace: true })
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Login Successful',
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
+                const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
+                fetch('http://localhost:5000/users', {
+                    method: "POST",
+                    headers: {
+                        'content-type': "application/json"
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json(saveUser))
+                    .then(data => {
+                        if (data.insertedId) {
+                            navigate(from, { replace: true })
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Login Successful',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
+                    })
             })
             .catch(error => {
                 console.log(error)
