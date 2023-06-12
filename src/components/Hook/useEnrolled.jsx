@@ -4,11 +4,12 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import useAxiosSecure from './useAxious';
 
 const useEnrolled = () => {
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const [ axiosSecure ] = useAxiosSecure();
 
     const { data: payment = [], refetch } = useQuery({
         queryKey: ['payment', user?.email],
+        enabled: !loading,
         queryFn: async () => {
             const res = await axiosSecure(`/payment/${user?.email}`)
             console.log('res from axios', res)
