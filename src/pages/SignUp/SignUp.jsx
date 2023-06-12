@@ -33,7 +33,7 @@ const SignUp = () => {
                     displayName: data.name, photoURL: data.photo
                 }).then(() => {
                     const saveUser = { name: data.name, email: data.email }
-                    fetch('http://localhost:5000/users', {
+                    fetch('https://summer-lens-learning-server-md-arefin.vercel.app/users', {
                         method: "POST",
                         headers: {
                             'content-type': "application/json"
@@ -75,7 +75,7 @@ const SignUp = () => {
                 navigate('/');
                 console.log(loggedUser);
                 const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
-                    fetch('http://localhost:5000/users', {
+                    fetch('https://summer-lens-learning-server-md-arefin.vercel.app/users', {
                         method: "POST",
                         headers: {
                             'content-type': "application/json"

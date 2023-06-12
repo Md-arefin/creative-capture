@@ -8,7 +8,7 @@ const ManageClasses = () => {
     // TODO: Btn
 
     const { data: classes = [], refetch } = useQuery(['classes'], async () => {
-        const res = await fetch('http://localhost:5000/classes')
+        const res = await fetch('https://summer-lens-learning-server-md-arefin.vercel.app/classes')
         return res.json();
     })
 

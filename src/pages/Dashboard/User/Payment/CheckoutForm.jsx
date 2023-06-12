@@ -90,7 +90,7 @@ const CheckoutForm = ({ cart, price }) => {
             }
 
 
-            fetch('http://localhost:5000/payments', {
+            fetch('https://summer-lens-learning-server-md-arefin.vercel.app/payments', {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'

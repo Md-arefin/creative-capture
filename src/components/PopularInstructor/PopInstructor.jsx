@@ -4,7 +4,7 @@ const PopInstructor = () => {
     const [popularInstructor, setPopularInstructor] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/popularInstructor')
+        fetch('https://summer-lens-learning-server-md-arefin.vercel.app/popularInstructor')
             .then(res => res.json())
             .then(data => {
                 setPopularInstructor(data)
