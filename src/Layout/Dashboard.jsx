@@ -5,6 +5,10 @@ import Navbar from '../components/Navbar/Navbar';
 import { AuthContext } from '../Providers/AuthProvider';
 import { SiGoogleclassroom } from "react-icons/si";
 import { FaUsers } from "react-icons/fa";
+import { TbChartHistogram } from "react-icons/tb";
+import { BiWallet } from "react-icons/bi";
+import { useAdmin } from '../components/Hook/useAdmin';
+import { useInstructor } from '../components/Hook/useInstructor';
 
 const Dashboard = () => {
 
@@ -12,7 +16,13 @@ const Dashboard = () => {
 
     // TODO: Load data from the server to have dynamic isAdmin based on data
 
-    const isAdmin = true;
+    // const isAdmin = true;
+
+    const [isAdmin] = useAdmin();
+
+
+    const [isInstructor] = useInstructor();
+
 
     return (
 
@@ -35,35 +45,8 @@ const Dashboard = () => {
                         {/* Sidebar content here */}
 
                         {
-                            isAdmin ?
-                                <>
-                                    <div className='space-y-5 text-black'>
-                                        <div className='text-center my-10'>
-                                            <div className="avatar">
-                                                <div className="w-24 rounded-full">
-                                                    <img src={user?.photoURL} />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h3 className='my-5 text-xl '>{user.displayName}</h3>
-                                                <h3 className='my-5 text-md'>{user?.email}</h3>
-                                            </div>
-                                        </div>
-                                        <li>
-                                            <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
-                                                <SiGoogleclassroom className='text-2xl md:text-3xl text-black ' />
-                                                <NavLink to='/dashboard/manageClasses'>Manage Classes</NavLink>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
-                                                <FaUsers className='text-2xl md:text-3xl text-black ' />
-                                                <NavLink to='/dashboard/manageUsers'>Manage Users</NavLink>
-                                            </div>
-                                        </li>
-                                    </div>
-                                </> :
+                            isAdmin &&
+                            <>
                                 <div className='space-y-5 text-black'>
                                     <div className='text-center my-10'>
                                         <div className="avatar">
@@ -79,24 +62,86 @@ const Dashboard = () => {
                                     <li>
                                         <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
                                             <SiGoogleclassroom className='text-2xl md:text-3xl text-black ' />
-                                            <NavLink to='/dashboard/selected'>Selected Classes</NavLink>
+                                            <NavLink to='/dashboard/manageClasses'>Manage Classes</NavLink>
                                         </div>
                                     </li>
 
                                     <li>
                                         <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
-                                            <BiWallet className='text-2xl md:text-3xl text-black ' />
-                                            <NavLink >Enrolled classes</NavLink>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
-                                            <TbChartHistogram className='text-2xl md:text-3xl text-black ' />
-                                            <NavLink >Payment history</NavLink>
+                                            <FaUsers className='text-2xl md:text-3xl text-black ' />
+                                            <NavLink to='/dashboard/manageUsers'>Manage Users</NavLink>
                                         </div>
                                     </li>
                                 </div>
+                            </>
+
+                            || 
+
+                            isInstructor &&
+                            <>
+                                <div className='space-y-5 text-black'>
+                                    <div className='text-center my-10'>
+                                        <div className="avatar">
+                                            <div className="w-24 rounded-full">
+                                                <img src={user?.photoURL} />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h3 className='my-5 text-xl '>{user.displayName}</h3>
+                                            <h3 className='my-5 text-md'>{user?.email}</h3>
+                                        </div>
+                                    </div>
+                                    <li>
+                                        <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
+                                            <SiGoogleclassroom className='text-2xl md:text-3xl text-black ' />
+                                            <NavLink to='/dashboard/addClass'>ADD Class</NavLink>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
+                                            <FaUsers className='text-2xl md:text-3xl text-black ' />
+                                            <NavLink to='/dashboard/myClasses'>My Classes</NavLink>
+                                        </div>
+                                    </li>
+                                </div>
+                            </>
+                            
+                            ||
+
+                            <div className='space-y-5 text-black'>
+                                <div className='text-center my-10'>
+                                    <div className="avatar">
+                                        <div className="w-24 rounded-full">
+                                            <img src={user?.photoURL} />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h3 className='my-5 text-xl '>{user.displayName}</h3>
+                                        <h3 className='my-5 text-md'>{user?.email}</h3>
+                                    </div>
+                                </div>
+                                <li>
+                                    <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
+                                        <SiGoogleclassroom className='text-2xl md:text-3xl text-black ' />
+                                        <NavLink to='/dashboard/selected'>Selected Classes</NavLink>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
+                                        <BiWallet className='text-2xl md:text-3xl text-black ' />
+                                        <NavLink >Enrolled classes</NavLink>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
+                                        <TbChartHistogram className='text-2xl md:text-3xl text-black ' />
+                                        <NavLink >Payment history</NavLink>
+                                    </div>
+                                </li>
+                            </div>
                         }
                     </ul>
                 </div>
