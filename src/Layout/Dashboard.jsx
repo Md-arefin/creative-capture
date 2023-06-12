@@ -138,7 +138,7 @@ const Dashboard = () => {
                                 <li>
                                     <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
                                         <TbChartHistogram className='text-2xl md:text-3xl text-black ' />
-                                        <NavLink >Payment history</NavLink>
+                                        <NavLink to='/dashboard/paymentHistory'>Payment history</NavLink>
                                     </div>
                                 </li>
                             </div>
