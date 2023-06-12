@@ -5,6 +5,8 @@ import Swal from 'sweetalert2';
 
 const Card = ({ classes }) => {
 
+    console.log(classes)
+
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
@@ -65,7 +67,7 @@ const Card = ({ classes }) => {
                 <p><span className='font-semibold text-lg'>Available Seats: </span> {AvailableSits}</p>
                 <p><span className='font-semibold text-lg'>Price: </span>${price}</p>
                 <div className="card-actions justify-end">
-                    <button onClick={() => handleSelectClass(classes)} className="btn bg-yellow-500 border-b-4 border-0 border-black ">Select Class</button>
+                    <button onClick={() => handleSelectClass(classes)} className="btn bg-yellow-500 hover:text-black border-b-4 border-0 border-black ">Select Class</button>
                 </div>
             </div>
         </div>

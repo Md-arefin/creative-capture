@@ -69,7 +69,7 @@ const InstructorsPage = () => {
                                   {sir.numberOfStudents}
                                 </td>
                                 <td  className='text-center'>
-                                <button className="btn  bg-yellow-500 border-b-4 border-0 border-black ">See Classes</button>
+                                <button className="btn  bg-yellow-500 hover:text-black border-b-4 border-0 border-black ">See Classes</button>
                                 </td>
                             </tr>)
                         }

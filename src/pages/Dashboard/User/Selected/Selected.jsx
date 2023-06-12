@@ -55,7 +55,7 @@ const Selected = () => {
 
                 <h3 className='text-2xl text-black font-semibold'>Total amount: $ {total.toFixed(2)}</h3>
                 <Link to='/dashboard/payment'>
-                    <button className="btn bg-yellow-500 border-b-4 border-0 border-black">Pay Now</button>
+                    <button className="btn bg-yellow-500 hover:text-black border-b-4 border-0 border-black">Pay Now</button>
                 </Link>
             </div>
             <div className="overflow-x-auto max-w-full mb-16 border-black border-2 rounded-lg my-10">
