@@ -85,6 +85,7 @@ const CheckoutForm = ({ cart, price }) => {
                 quantity: cart.length,
                 selectedClassItems: cart.map(item => item._id),
                 classItemId: cart.map(item => item.classItemId),
+                classImage: cart.map(item => item. classImage),
                 itemNames: cart.map(item => item.classTitle)
             }
 

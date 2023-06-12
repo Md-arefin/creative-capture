@@ -131,7 +131,7 @@ const Dashboard = () => {
                                 <li>
                                     <div className='text-black bg-yellow-500 text-lg border-b-4 border-0 border-black flex justify-center'>
                                         <BiWallet className='text-2xl md:text-3xl text-black ' />
-                                        <NavLink >Enrolled classes</NavLink>
+                                        <NavLink to='/dashboard/enrolledClasses'>Enrolled classes</NavLink>
                                     </div>
                                 </li>
 
