@@ -58,11 +58,7 @@ const PaymentHistory = () => {
                                     ${item.price}
                                 </td>
                             </tr>)
-                        }
-
-
-
-                        {/* row 2 */}
+                        } {/* row 2 */}
                     </tbody>
                 </table>
             </div>
