@@ -1,6 +1,7 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../../components/Hook/useAxious';
 import { AuthContext } from '../../../../Providers/AuthProvider';
 import './paymentStyle.css'
 
@@ -13,20 +14,16 @@ const CheckoutForm = ({ cart, price }) => {
     const [clientSecret, setClientSecret] = useState("");
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
+    const [axiosSecure] = useAxiosSecure();
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
         if (price > 0) {
-            fetch("http://localhost:5000/create-payment-intent", {
-                method: "POST",
-                headers: { "content-type": "application/json" },
-                body: JSON.stringify({ price }),
+            axiosSecure.post('/create-payment-intent', { price})
+            .then(res =>{
+                console.log(res.data.clientSecret)
+                setClientSecret(res.data.clientSecret)
             })
-                .then((res) => res.json())
-                .then((data) => {
-                    console.log(data.clientSecret)
-                    setClientSecret(data.clientSecret)
-                });
         }
 
     }, []);
@@ -84,6 +81,7 @@ const CheckoutForm = ({ cart, price }) => {
                 email: user?.email,
                 transactionId: paymentIntent.id,
                 price,
+                date: new Date(),
                 quantity: cart.length,
                 selectedClassItems: cart.map(item => item._id),
                 classItemId: cart.map(item => item.classItemId),

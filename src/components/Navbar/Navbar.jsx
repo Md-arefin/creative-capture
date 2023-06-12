@@ -2,11 +2,15 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import { AuthContext } from '../../Providers/AuthProvider';
+import { useAdmin } from '../Hook/useAdmin';
+import { useInstructor } from '../Hook/useInstructor';
 
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext);
+    const [isAdmin ] = useAdmin();
+    const [isInstructor] = useInstructor();
 
     const navItems = <>
         <li>
@@ -21,7 +25,7 @@ const Navbar = () => {
         {
             user &&
             <li>
-                <Link to='/dashboard/selected'>Dashboard</Link>
+                <Link to={`${isAdmin ? '/dashboard/manageUsers' : isInstructor ? '/dashboard/addClass' : '/dashboard/selected' }`}>Dashboard</Link>
             </li>
         }
 

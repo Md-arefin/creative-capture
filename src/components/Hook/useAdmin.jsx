@@ -11,7 +11,7 @@ export const useAdmin = () => {
         queryKey: ['isAdmin', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/users/admin/${user?.email}`)
-            console.log("is ADMIN ", res.data.admin)
+            // console.log("is ADMIN ", res.data.admin)
             return res.data.admin;
 
         }
