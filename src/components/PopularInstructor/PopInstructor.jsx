@@ -4,10 +4,11 @@ const PopInstructor = () => {
     const [popularInstructor, setPopularInstructor] = useState([]);
 
     useEffect(() => {
-        fetch('https://summer-lens-learning-server-md-arefin.vercel.app/popularInstructor')
+        fetch('https://summer-lens-learning-server-md-arefin.vercel.app/popularClass')
             .then(res => res.json())
             .then(data => {
                 setPopularInstructor(data)
+                console.log(data)
             })
     }, [])
 
@@ -18,11 +19,10 @@ const PopInstructor = () => {
 
                 {popularInstructor.map(items =>
                         <div  key={items._id} className="card w-full bg-base-100 shadow-xl">
-                            <figure><img className='h-[400px] w-[410px]' src={items.instructorImage} alt='' /></figure>
+                            <figure><img className='h-[400px] w-[460px]' src={items.teacherPhoto} alt='' /></figure>
                             <div className="card-body">
-                                <h2 className="card-title">{items.instructorName}</h2>
-                                <p><span className='font-semibold text-lg'>Experience: </span>{items.instructorExperience}</p>
-                                <p><span className='font-semibold text-lg'>Total Classes: </span>{items.numberOfClasses}</p>
+                                <h2 className="card-title">{items.teacherName}</h2>
+                                <p><span className='font-semibold text-lg'>Email: </span>{items.email}</p>
                                 <p><span className='font-semibold text-lg'>Total Students: </span> {items.numberOfStudents}</p>
                                 <p className='font-semibold text-lg'></p>
                             </div>

@@ -6,9 +6,12 @@ const InstructorsPage = () => {
    
 
     useEffect(() => {
-        fetch('https://summer-lens-learning-server-md-arefin.vercel.app/instructors')
+        fetch('https://summer-lens-learning-server-md-arefin.vercel.app/classes')
             .then(res => res.json())
-            .then(data => setSir(data))
+            .then(data => {
+                setSir(data)
+                console.log(data)
+            })
     }, [])
 
     return (
@@ -33,8 +36,9 @@ const InstructorsPage = () => {
                                #
                             </th>
                             <th className='text-lg text-black'>Instructors Name</th>
-                            <th className='text-lg text-black text-center'>Experiences</th>
-                            <th className='text-lg text-black text-center'>Total Classes</th>
+                            <th className='text-lg text-center text-black'>Email</th>
+                            <th className='text-lg text-black text-center'>Class Title</th>
+                            <th className='text-lg text-black text-center'>Price</th>
                             <th className='text-lg text-black text-center'>Total Students</th>
                             <th className='text-lg text-black text-center'>See Classes</th>
                         </tr>
@@ -51,20 +55,22 @@ const InstructorsPage = () => {
                                     <div className="flex items-center space-x-3">
                                         <div className="avatar">
                                             <div className="mask mask-squircle w-12 h-12">
-                                                <img src={sir.instructorImage} alt="Avatar Tailwind CSS Component" />
+                                                <img src={sir.teacherPhoto} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
                                         <div>
-                                            <div className="font-bold">{sir.instructorName
-}</div>
+                                            <div className="font-bold">{sir.teacherName}</div>
                                         
                                         </div>
                                     </div>
                                 </td>
-                                <td  className='text-center'>
-                                    {sir.instructorExperience}
+                                <td className='text-center'>
+                                    {sir.email}
                                 </td>
-                                <td  className='text-center'>{sir.numberOfClasses}</td>
+                                <td  className='text-center'>
+                                    {sir.classTitle}
+                                </td>
+                                <td  className='text-right'>${sir.price}</td>
                                 <td  className='text-center'>
                                   {sir.numberOfStudents}
                                 </td>

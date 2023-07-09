@@ -3,10 +3,10 @@ import useMyClasses from '../../../components/Hook/useMyClasses';
 
 
 const MyClasses = () => {
-    
-   
-const [classes , refetch] = useMyClasses();
-  
+
+
+    const [classes, refetch] = useMyClasses();
+
 
     return (
         <div className='w-full'>
@@ -22,23 +22,25 @@ const [classes , refetch] = useMyClasses();
 
             <div className='mx-[50px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10'>
                 {
-                    classes.map(item => <div 
-                    key={item._id}
-                    className="card w-full bg-base-100 shadow-xl">
-                    <figure><img src={item.classImage} alt={item.classTitle} /></figure>
-                    <div className="card-body">
-                        <h2 className="card-title">{item.classTitle}</h2>
-                        <p><span className='font-semibold text-lg'>Instructor: </span>{item.teacherName}</p>
-                        <p><span className='font-semibold text-lg'>Total Students: </span>{item?.numberOfStudents}</p>
-                        <p><span className='font-semibold text-lg'>Available Seats: </span>{item.AvailableSits}</p>
-                        <p><span className='font-semibold text-lg'>Price </span>${item.price}</p>
-                       
-                    </div>
-                </div> )
+                    classes.map(item => <div
+                        key={item._id}
+                        className="card w-full bg-base-100 shadow-xl">
+                        <figure><img src={item.classImage} alt={item.classTitle} /></figure>
+                        <div className="card-body">
+                            <h2 className="card-title">{item.classTitle}</h2>
+                            <p><span className='font-semibold text-lg'>Instructor: </span>{item.teacherName}</p>
+                            <p><span className='font-semibold text-lg'>Total Students: </span>{item?.numberOfStudents}</p>
+                            <p><span className='font-semibold text-lg'>Available Seats: </span>{item.AvailableSits}</p>
+                            <p><span className='font-semibold text-lg'>Price </span>${item.price}</p>
+                            <div className="card-actions justify-center mt-5">
+                                <button className="btn   bg-yellow-500 w-1/2  hover:text-black border-b-4 border-0 border-black ">Edit</button>
+                            </div>
+                        </div>
+                    </div>)
                 }
             </div>
 
-           
+
         </div>
     );
 };

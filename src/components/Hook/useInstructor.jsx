@@ -12,7 +12,7 @@ export const useInstructor = () => {
         enabled: !loading,
         queryFn: async () => {
             const res = await axiosSecure.get(`/users/instructor/${user?.email}`)
-            // console.log("is ADMIN ", res.data)
+            console.log("is Instructor", res.data)
             return res.data.instructor;
 
         }

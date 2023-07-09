@@ -16,8 +16,8 @@ const AddClasses = () => {
 
     const onSubmit = data => {
 
-        console.log(data )
-        
+        console.log(data)
+
         const formData = new FormData();
         formData.append('image', data.image[0])
 
@@ -27,12 +27,20 @@ const AddClasses = () => {
         }).then(res => res.json())
             .then(imgResponse => {
                 console.log("imgResponse", imgResponse)
-                 if (imgResponse.success) {
+                if (imgResponse.success) {
                     const classImage = imgResponse.data.display_url;
+                    const teacherPhoto = user.photoURL;
+                    const numberOfStudents = '00';
                     const { classTitle, price, AvailableSits, teacherName, email } = data;
-                    const newItem = { classTitle, price: parseFloat(price),
-                        AvailableSits: parseFloat(AvailableSits), teacherName, email, classImage }
-                    console.log('imgURL ', classImage )
+                    const newItem = {
+                        classTitle,
+                        price: parseFloat(price),
+                        AvailableSits: parseFloat(AvailableSits),
+                        teacherName, email, teacherPhoto,
+                        numberOfStudents: parseFloat(numberOfStudents),
+                        classImage
+                    }
+                    console.log('imgURL ', classImage)
                     axiosSecure.post('/classes', newItem)
                         .then(data => {
                             console.log('after posting new menu item', data.data)
@@ -76,7 +84,7 @@ const AddClasses = () => {
                             {...register("classTitle", { required: true })}
                             className="input input-bordered w-full " />
                     </div>
-{/* ins name */}
+                    {/* ins name */}
                     <div className="form-control w-full ">
                         <label className="label">
                             <span className="label-tex text-black font-semibold">Your Name</span>
@@ -85,7 +93,7 @@ const AddClasses = () => {
                             {...register("teacherName", { required: true })}
                             className="input input-bordered w-full " />
                     </div>
-{/* email */}
+                    {/* email */}
                     <div className="form-control w-full ">
                         <label className="label">
                             <span className="label-tex text-black font-semibold">Your Email</span>
@@ -94,14 +102,14 @@ const AddClasses = () => {
                             {...register("email", { required: true })}
                             className="input input-bordered w-full " />
                     </div>
-{/* image */}
+                    {/* image */}
                     <div className="flex items-center justify-between my-4">
 
                         <div className="form-control w-full my-4 fl">
                             <label className="label">
                                 <span className="label-text font-semibold">Class Image</span>
                             </label>
-                            <input type="file" placeholder=" " {...register("image", { required: true })}  multiple={false} className="file-input file-input-bordered w-full " />
+                            <input type="file" placeholder=" " {...register("image", { required: true })} multiple={false} className="file-input file-input-bordered w-full " />
 
                         </div>
                         <div className="form-control w-full ml-4">
@@ -118,7 +126,9 @@ const AddClasses = () => {
                         </div>
                     </div>
 
-                    <input className="btn mx-[200px] mt-4" type="submit" value="Add Item" />
+                  
+                        <input className="btn w-1/2 mx-[200px] mt-4 " type="submit" value="Add Item" />
+                   
                 </form>
             </div>
         </div>

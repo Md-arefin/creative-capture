@@ -90,8 +90,7 @@ const Selected = () => {
                                     <div className="flex items-center space-x-3">
                                         <div className="avatar">
                                             <div className="mask mask-squircle w-12 h-12">
-                                                <img src={item.
-                                                    classImage} alt="Avatar Tailwind CSS Component" />
+                                                <img src={item.classImage} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
                                         <div>
@@ -104,8 +103,8 @@ const Selected = () => {
                                 <td>
                                     {item.teacherName}
                                 </td>
-                                <td className='text-center'>{item.numberOfStudents}</td>
                                 <td className='text-center'>{item.AvailableSits}</td>
+                                <td className='text-center'>{item.numberOfStudents}</td>
                                 <td className='text-right font-semibold'>
                                     ${item.price}
                                 </td>

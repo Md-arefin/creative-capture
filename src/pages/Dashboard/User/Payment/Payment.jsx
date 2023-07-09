@@ -8,8 +8,8 @@ const stripePromise = loadStripe(import.meta.env.VITE_PK);
 
 const Payment = () => {
 
-    const [cart] = useClassQuery();
-    const total = cart.reduce((sum, item)=> sum + item.price , 0);
+    const [classes] = useClassQuery();
+    const total = classes.reduce((sum, item)=> sum + item.price , 0);
     const price = parseFloat(total.toFixed(2))
 
     return (
@@ -24,7 +24,7 @@ const Payment = () => {
                 </div>
             </div>
             <Elements stripe={stripePromise}>
-                <CheckoutForm cart={cart} price={price}></CheckoutForm>
+                <CheckoutForm classes={classes} price={price}></CheckoutForm>
             </Elements>
         </section>
     );

@@ -5,7 +5,7 @@ import useAxiosSecure from '../../../../components/Hook/useAxious';
 import { AuthContext } from '../../../../Providers/AuthProvider';
 import './paymentStyle.css'
 
-const CheckoutForm = ({ cart, price }) => {
+const CheckoutForm = ({ classes , price }) => {
 
     const { user } = useContext(AuthContext)
     const stripe = useStripe();
@@ -82,11 +82,11 @@ const CheckoutForm = ({ cart, price }) => {
                 transactionId: paymentIntent.id,
                 price,
                 date: new Date(),
-                quantity: cart.length,
-                selectedClassItems: cart.map(item => item._id),
-                classItemId: cart.map(item => item.classItemId),
-                classImage: cart.map(item => item. classImage),
-                itemNames: cart.map(item => item.classTitle)
+                quantity: classes.length,
+                selectedClassItems: classes.map(item => item._id),
+                classItemId: classes.map(item => item.classItemId),
+                classImage: classes.map(item => item. classImage),
+                itemNames: classes.map(item => item.classTitle)
             }
 
 

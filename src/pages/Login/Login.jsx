@@ -26,7 +26,6 @@ const Login = () => {
         signIn(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
-                navigate(from, { replace: true });
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -34,6 +33,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
+                navigate(from, { replace: true });
                 console.log(loggedUser)
             })
             .catch(error => {
@@ -65,14 +65,14 @@ const Login = () => {
                 })
                     .then(res => res.json(saveUser))
                     .then( () => {
-                         navigate(from, { replace: true })
-                            Swal.fire({
-                                position: 'center',
-                                icon: 'success',
-                                title: 'Login Successful',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Login Successful',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        navigate(from, { replace: true })
                     })
             })
             .catch(error => {

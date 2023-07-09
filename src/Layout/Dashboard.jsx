@@ -19,10 +19,10 @@ const Dashboard = () => {
     // const isAdmin = true;
 
     const [isAdmin] = useAdmin();
-
+    console.log(isAdmin)
 
     const [isInstructor] = useInstructor();
-
+    console.log(isInstructor)
 
     return (
 
@@ -75,7 +75,7 @@ const Dashboard = () => {
                                 </div>
                             </>
 
-                            || 
+                            ||
 
                             isInstructor &&
                             <>
@@ -106,7 +106,7 @@ const Dashboard = () => {
                                     </li>
                                 </div>
                             </>
-                            
+
                             ||
 
                             <div className='space-y-5 text-black'>

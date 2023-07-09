@@ -31,8 +31,10 @@ const SignUp = () => {
                 console.log(loggedUser);
                 updateUserProfile({
                     displayName: data.name, photoURL: data.photo
+                    
                 }).then(() => {
                     const saveUser = { name: data.name, email: data.email }
+                    console.log(saveUser)
                     fetch('https://summer-lens-learning-server-md-arefin.vercel.app/users', {
                         method: "POST",
                         headers: {
@@ -72,7 +74,6 @@ const SignUp = () => {
         googleSignIn()
             .then(result => {
                 const loggedUser = result.user;
-                navigate('/');
                 console.log(loggedUser);
                 const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
                     fetch('https://summer-lens-learning-server-md-arefin.vercel.app/users', {
@@ -84,14 +85,14 @@ const SignUp = () => {
                     })
                         .then(res => res.json(saveUser))
                         .then( () => {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Sign up Successful',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
                             navigate(from, { replace: true })
-                               Swal.fire({
-                                   position: 'center',
-                                   icon: 'success',
-                                   title: 'Sign up Successful',
-                                   showConfirmButton: false,
-                                   timer: 1500
-                               })
                        })
             })
             .catch(error => {
