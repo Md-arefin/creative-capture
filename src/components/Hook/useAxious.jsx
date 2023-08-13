@@ -5,8 +5,8 @@ import { AuthContext } from '../../Providers/AuthProvider';
 
 
 const axiosSecure = axios.create({
-  baseURL: 'https://summer-lens-learning-server-md-arefin.vercel.app/', 
-  // baseURL: 'https://summer-lens-learning-server-md-arefin.vercel.app/', 
+  baseURL: 'https://creative-capture-server.onrender.com/', 
+  // baseURL: 'https://creative-capture-server.onrender.com/', 
 });
 
 const useAxiosSecure = () => {

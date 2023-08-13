@@ -5,7 +5,7 @@ Creative Capture
 
 
 ## 🔗 Links
-Live Link: https://capable-lollipop-aa00e3.netlify.app/
+Live Link: creative-capture-2ad74.web.app/
 
 
 ## Features

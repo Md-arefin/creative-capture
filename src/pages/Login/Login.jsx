@@ -56,10 +56,11 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
-                fetch('https://summer-lens-learning-server-md-arefin.vercel.app/users', {
+                fetch('https://creative-capture-server.onrender.com/users', {
                     method: "POST",
                     headers: {
-                        'content-type': "application/json"
+                        'content-type': "application/json",
+                        "authorization" : `Bearer ${localStorage.getItem("access-token")}`
                     },
                     body: JSON.stringify(saveUser)
                 })

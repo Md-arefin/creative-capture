@@ -90,7 +90,7 @@ const CheckoutForm = ({ classes , price }) => {
             }
 
 
-            fetch('https://summer-lens-learning-server-md-arefin.vercel.app/payments', {
+            fetch('https://creative-capture-server.onrender.com/payments', {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'

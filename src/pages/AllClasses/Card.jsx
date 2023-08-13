@@ -21,7 +21,7 @@ const Card = ({ classes }) => {
                 classItemId: _id,
                 classImage, classTitle, numberOfStudents, price, teacherName, email: user.email,AvailableSits
             }
-            fetch('https://summer-lens-learning-server-md-arefin.vercel.app/classSelected', {
+            fetch('https://creative-capture-server.onrender.com/classSelected', {
                 method: 'POST',
                 headers: {
                     'content-type': "application/json"

@@ -19,31 +19,31 @@ const Slider = () => {
                 className="mySwiper"
             >
                 <SwiperSlide >
-                    <img className='h-[950px] w-full' src="https://i.ibb.co/5xP8fWV/IMG-20230608-102554.jpg" alt="" />
+                    <img className='h-[750px] w-full' src="https://i.ibb.co/5xP8fWV/IMG-20230608-102554.jpg" alt="" />
                 </SwiperSlide>
 
                 {/* 1 */}
 
                 <SwiperSlide>
-                    <img className='h-[950px] w-full' src="https://i.ibb.co/khkDJrD/little-girl-with-long-dark-hair-holding-camera-hands-standing-alley-park-female-child-straw-hat-with.jpg" alt="" />
+                    <img className='h-[750px] w-full' src="https://i.ibb.co/khkDJrD/little-girl-with-long-dark-hair-holding-camera-hands-standing-alley-park-female-child-straw-hat-with.jpg" alt="" />
                 </SwiperSlide>
 
                 {/* 2 */}
 
                 <SwiperSlide>
-                    <img className='h-[950px] w-full' src="https://i.ibb.co/qphFpwd/funny-boy-with-camera.jpg" alt="" />
+                    <img className='h-[750px] w-full' src="https://i.ibb.co/qphFpwd/funny-boy-with-camera.jpg" alt="" />
                 </SwiperSlide>
 
                 {/*3  */}
 
                 <SwiperSlide>
-                    <img className='h-[950px] w-full' src="https://i.ibb.co/Qft4Dmj/handsome-african-guy-with-stylish-haircut-taking-photo-digital-camera.jpg" alt="" />
+                    <img className='h-[750px] w-full' src="https://i.ibb.co/Qft4Dmj/handsome-african-guy-with-stylish-haircut-taking-photo-digital-camera.jpg" alt="" />
                 </SwiperSlide>
 
                 {/* 4 */}
 
                 <SwiperSlide>
-                    <img className='h-[950px] w-full' src="https://i.ibb.co/Jk7PZMQ/professional-camera-blurred.jpg" alt="" />
+                    <img className='h-[750px] w-full' src="https://i.ibb.co/Jk7PZMQ/professional-camera-blurred.jpg" alt="" />
                 </SwiperSlide>
 
                 {/* 5 */}

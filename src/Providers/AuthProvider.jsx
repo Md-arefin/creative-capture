@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { createContext } from 'react';
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
-import app from '../Firebase/firebase.config';
 import axios from 'axios';
+import app from '../Firebase/firebase.config';
+import { json } from 'react-router-dom';
 
 export const AuthContext = createContext(null);
 
@@ -29,7 +30,7 @@ const AuthProvider = ({ children }) => {
         return signOut(auth)
     }
 
-    const createUser = (email, password) =>{
+    const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
     }
@@ -41,25 +42,35 @@ const AuthProvider = ({ children }) => {
 
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, loggedUser => {
+        // const unsubscribe = onAuthStateChanged(auth, loggedUser => {
+        //     setUser(loggedUser);
+        //     setLoading(false);
+        // })
+        // return () => unsubscribe()
+
+        const unsubscribe = onAuthStateChanged(auth, async (loggedUser) => {
             setUser(loggedUser);
 
-            // jwt
-           if(loggedUser){
-            axios.post('https://summer-lens-learning-server-md-arefin.vercel.app/jwt', {email: loggedUser.email })
-            .then(data =>{
-                // console.log(data.data.token)
-                localStorage.setItem('access-token', data.data.token)
-                setLoading(false);
-            })
-           }
-           else{
-            localStorage.removeItem('access-token')
-           }
+            if(loggedUser?.email){
+                https://creative-capture-server.onrender.com/
+                fetch('https://creative-capture-server.onrender.com/jwt', {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify({email: loggedUser?.email})
+                })
+                .then( res => res.json())
+                .then( data => {
+                    console.log(data);
+                    localStorage.setItem("access-token" , data?.token);
+                })
+            }
+            setLoading(false);
 
-        })
-
+        });
         return () => unsubscribe();
+
     })
 
     const authInfo = {
@@ -70,7 +81,7 @@ const AuthProvider = ({ children }) => {
         createUser,
         updateUserProfile,
         signIn,
-
+        setLoading,
     }
 
     return (

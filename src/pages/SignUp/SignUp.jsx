@@ -35,7 +35,7 @@ const SignUp = () => {
                 }).then(() => {
                     const saveUser = { name: data.name, email: data.email }
                     console.log(saveUser)
-                    fetch('https://summer-lens-learning-server-md-arefin.vercel.app/users', {
+                    fetch('https://creative-capture-server.onrender.com/users', {
                         method: "POST",
                         headers: {
                             'content-type': "application/json"
@@ -66,9 +66,9 @@ const SignUp = () => {
 
     }
 
-    console.log(watch("example")); // watch input value by passing the name of it
+    // console.log(watch("example")); // watch input value by passing the name of it
 
-    // {/* /* "handleSubmit" will validate your inputs before invoking "onSubmit" */ */}
+    // // {/* /* "handleSubmit" will validate your inputs before invoking "onSubmit" */ */}
 
     const handleGoogle = () => {
         googleSignIn()
@@ -76,10 +76,11 @@ const SignUp = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
-                    fetch('https://summer-lens-learning-server-md-arefin.vercel.app/users', {
+                    fetch('https://creative-capture-server.onrender.com/users', {
                         method: "POST",
                         headers: {
-                            'content-type': "application/json"
+                            'content-type': "application/json",
+                            "authorization" : `Bearer ${localStorage.getItem("access-token")}`
                         },
                         body: JSON.stringify(saveUser)
                     })
