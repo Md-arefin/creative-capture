@@ -6,7 +6,7 @@ const InstructorsPage = () => {
    
 
     useEffect(() => {
-        fetch('https://creative-capture-server.onrender.com/classes')
+        fetch('https://summer-lens-learning-server-md-arefin.vercel.app/classes')
             .then(res => res.json())
             .then(data => {
                 setSir(data)

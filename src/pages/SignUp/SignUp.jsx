@@ -35,7 +35,7 @@ const SignUp = () => {
                 }).then(() => {
                     const saveUser = { name: data.name, email: data.email }
                     console.log(saveUser)
-                    fetch('https://creative-capture-server.onrender.com/users', {
+                    fetch('https://summer-lens-learning-server-md-arefin.vercel.app/users', {
                         method: "POST",
                         headers: {
                             'content-type': "application/json"
@@ -76,7 +76,7 @@ const SignUp = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
-                    fetch('https://creative-capture-server.onrender.com/users', {
+                    fetch('https://summer-lens-learning-server-md-arefin.vercel.app/users', {
                         method: "POST",
                         headers: {
                             'content-type': "application/json",

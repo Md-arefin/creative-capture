@@ -14,7 +14,7 @@ const ManageUsers = () => {
     })
 
     const handleMakeAdmin = user => {
-        fetch(`https://creative-capture-server.onrender.com/users/admin/${user._id}`, {
+        fetch(`https://summer-lens-learning-server-md-arefin.vercel.app/users/admin/${user._id}`, {
             method: "PATCH"
         }).then(res => res.json())
             .then(data => {
@@ -33,7 +33,7 @@ const ManageUsers = () => {
     }
 
     const handleMakeInstructor = user => {
-        fetch(`https://creative-capture-server.onrender.com/users/instructor/${user._id}`, {
+        fetch(`https://summer-lens-learning-server-md-arefin.vercel.app/users/instructor/${user._id}`, {
             method: "PATCH"
         }).then(res => res.json())
             .then(data => {
@@ -63,7 +63,7 @@ const ManageUsers = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://creative-capture-server.onrender.com/users/${item._id}`, {
+                fetch(`https://summer-lens-learning-server-md-arefin.vercel.app/users/${item._id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

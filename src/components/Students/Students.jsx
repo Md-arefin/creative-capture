@@ -1,15 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/pagination";
+import 'swiper/css/pagination';
 import { Pagination } from "swiper";
 
 const Students = () => {
+    const [slidesPerView, setSlidesPerView] = useState(3);
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth < 576) {
+        setSlidesPerView(1);
+      } else if (window.innerWidth < 768) {
+        setSlidesPerView(2);
+      } else if (window.innerWidth < 992) {
+        setSlidesPerView(4);
+      } else {
+        setSlidesPerView(5);
+      }
+    }
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
     return (
         <>
             <Swiper
-                slidesPerView={4}
-                centeredSlides={true}
+                slidesPerView={slidesPerView}
                 spaceBetween={30}
                 pagination={{
                     clickable: true,
@@ -17,8 +38,8 @@ const Students = () => {
                 modules={[Pagination]}
                 className="mySwiper"
             >
-                <SwiperSlide>
-                    <img src="https://i.ibb.co/CVkq7S4/photography-for-kids-kelly-sikkema-p5-DDct-K4dg-A-unsplash.webp" alt="" />
+                <SwiperSlide >
+                    <img className='w-full' src="https://i.ibb.co/CVkq7S4/photography-for-kids-kelly-sikkema-p5-DDct-K4dg-A-unsplash.webp" alt="" />
                 </SwiperSlide>
 
                 <SwiperSlide>
@@ -48,10 +69,6 @@ const Students = () => {
                 <SwiperSlide>
                     <img src="https://i.ibb.co/n1cqyFP/teach-kids-photography.webp" alt="" />
                 </SwiperSlide>
-                <SwiperSlide>
-                    <img src="" alt="" />
-                </SwiperSlide>
-
             </Swiper>
         </>
     );

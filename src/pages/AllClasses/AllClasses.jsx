@@ -7,7 +7,7 @@ const AllClasses = () => {
     const [allClass, setAllClass] = useState([]);
 
     useEffect(() => {
-        fetch('https://creative-capture-server.onrender.com/classes')
+        fetch('https://summer-lens-learning-server-md-arefin.vercel.app/classes')
             .then(res => res.json())
             .then(data => setAllClass(data))
     }, [])

@@ -5,7 +5,7 @@ import { FaSpinner } from 'react-icons/fa'
 
 const PrivateRoutes = ({children}) => {
 
-    const {user, loading, setLoading} = useContext(AuthContext);
+    const {user, loading} = useContext(AuthContext);
     const location = useLocation();
 
     if(loading){

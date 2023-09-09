@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
+import LazyLoad from 'react-lazy-load';
 
 
 const Slider = () => {
@@ -19,7 +20,9 @@ const Slider = () => {
                 className="mySwiper"
             >
                 <SwiperSlide >
-                    <img className='h-[750px] w-full' src="https://i.ibb.co/5xP8fWV/IMG-20230608-102554.jpg" alt="" />
+                    <LazyLoad height={750} offset={100}>
+                        <img className='h-[750px] w-full' src="https://i.ibb.co/5xP8fWV/IMG-20230608-102554.jpg" alt="" />
+                    </LazyLoad>
                 </SwiperSlide>
 
                 {/* 1 */}

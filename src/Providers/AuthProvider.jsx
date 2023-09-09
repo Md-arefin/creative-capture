@@ -42,18 +42,13 @@ const AuthProvider = ({ children }) => {
 
 
     useEffect(() => {
-        // const unsubscribe = onAuthStateChanged(auth, loggedUser => {
-        //     setUser(loggedUser);
-        //     setLoading(false);
-        // })
-        // return () => unsubscribe()
 
         const unsubscribe = onAuthStateChanged(auth, async (loggedUser) => {
             setUser(loggedUser);
 
             if(loggedUser?.email){
-                https://creative-capture-server.onrender.com/
-                fetch('https://creative-capture-server.onrender.com/jwt', {
+                https://summer-lens-learning-server-md-arefin.vercel.app/
+                fetch('https://summer-lens-learning-server-md-arefin.vercel.app/jwt', {
                     method: "POST",
                     headers: {
                         "content-type": "application/json"
@@ -65,6 +60,8 @@ const AuthProvider = ({ children }) => {
                     console.log(data);
                     localStorage.setItem("access-token" , data?.token);
                 })
+            }else{
+                localStorage.removeItem("access-token");
             }
             setLoading(false);
 

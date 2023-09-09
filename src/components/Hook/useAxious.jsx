@@ -5,8 +5,8 @@ import { AuthContext } from '../../Providers/AuthProvider';
 
 
 const axiosSecure = axios.create({
-  baseURL: 'https://creative-capture-server.onrender.com/', 
-  // baseURL: 'https://creative-capture-server.onrender.com/', 
+  baseURL: 'https://summer-lens-learning-server-md-arefin.vercel.app/', 
+  // baseURL: 'https://summer-lens-learning-server-md-arefin.vercel.app/', 
 });
 
 const useAxiosSecure = () => {
@@ -22,16 +22,17 @@ const useAxiosSecure = () => {
       return config;
     });
 
-    axiosSecure.interceptors.response.use(
-      (response) => response,
-      async (error) => {
-        if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-          await logOut();
-          navigate('/login');
-        }
-        return Promise.reject(error);
-      }
-    );
+    // axiosSecure.interceptors.response.use(
+    //   (response) => response,
+    //   async (error) => {
+    //     if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+    //       console.log(error.response);
+    //       await logOut();
+    //       navigate('/login');
+    //     }
+    //     return Promise.reject(error);
+    //   }
+    // );
   }, [logOut, navigate, axiosSecure]);
 
   return [axiosSecure];

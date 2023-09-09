@@ -7,6 +7,10 @@ import { FaUserGraduate, FaUsers, FaCameraRetro } from "react-icons/fa";
 import { GiTeacher } from "react-icons/gi";
 import { SiGoogleclassroom } from "react-icons/si";
 import Banner from './Banner/Banner';
+import Sponsor from './sponsor/Sponsor';
+import sponsorImg from '../../assets/deal.png';
+import reviewImg from '../../assets/review.png';
+import Review from './Review/Review';
 
 
 const Home = () => {
@@ -15,7 +19,7 @@ const Home = () => {
 
 
     useEffect(() => {
-        fetch('https://creative-capture-server.onrender.com/popularClass')
+        fetch('https://summer-lens-learning-server-md-arefin.vercel.app/popularClass')
             .then(res => res.json())
             .then(data => setPopularClasses(data))
     }, [])
@@ -96,6 +100,39 @@ const Home = () => {
                 </div>
                 {/*  */}
                 <PopInstructor></PopInstructor>
+            </section>
+
+
+            {/* SPONSoR */}
+
+            <section className='my-16'>
+                <div className='mx-auto mb-16 pb-5'>
+                    <div className='flex justify-center items-center gap-5'>
+                        <img src={sponsorImg} className='w-8' />
+                        <h3 className='text-center font-semibold text-2xl md:text-3xl '>
+                            Sponsors
+                        </h3>
+                    </div>
+                    <div className='mx-auto border-b-2 pb-5 w-[300px]'></div>
+                </div>
+                {/*  */}
+                <Sponsor />
+            </section>
+
+            {/* Review */}
+
+            <section className='my-16'>
+                <div className='mx-auto mb-16 pb-5'>
+                    <div className='flex justify-center items-center gap-5'>
+                        <img src={reviewImg} className='w-8' />
+                        <h3 className='text-center font-semibold text-2xl md:text-3xl '>
+                            Review
+                        </h3>
+                    </div>
+                    <div className='mx-auto border-b-2 pb-5 w-[300px]'></div>
+                </div>
+                {/*  */}
+                <Review />
             </section>
 
             {/*  */}
